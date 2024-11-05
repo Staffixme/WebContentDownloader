@@ -5,6 +5,8 @@ from PyQt6.QtCore import QRunnable, pyqtSlot
 
 from app_data import ffmpeg_path
 
+from os import path
+
 
 class Downloader(QRunnable):
     def __init__(self, video_info):
@@ -14,7 +16,7 @@ class Downloader(QRunnable):
     @pyqtSlot()
     def run(self):
         ydl_opts = {
-            'outtmpl': self.video_info.get("directory", ""),
+            'outtmpl': path.join(self.video_info.get("directory", ""), self.video_info.get("title", "")),
             'ffmpeg_location': ffmpeg_path,
             'format': f"bestvideo[height<={self.video_info["format"]}]+bestaudio/best[height<={self.video_info["format"]}]",
             'postprocessors': [{
@@ -24,6 +26,7 @@ class Downloader(QRunnable):
             'socket_timeout': 50,
             'retry_scale': 5,
             'retries': 15,
+            'noplaylist': True,
             # 'sponsorblock': self.is_ad_delete,
             # 'sponsorblock-remove': ['sponsor'],
         }
@@ -37,7 +40,5 @@ class Downloader(QRunnable):
                 if e.errno == 32:
                     print("Процесс все еще занят.")
                     time.sleep(5)
-            except Exception as e:
-                print(e.__str__(), type(e), e)
             else:
-                raise
+                raise Exception("can't download")

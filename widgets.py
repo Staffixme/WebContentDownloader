@@ -8,7 +8,8 @@ from PyQt6.QtCore import Qt, QUrl, QPoint, pyqtSignal
 from PyQt6 import uic
 from PyQt6.QtWebEngineWidgets import QWebEngineView
 
-from app_data import directory_to_save, updateSettings, tray_option, ffmpeg_path
+from app_data import directory_to_save, updateSettings, tray_option, ffmpeg_path, APP_VERSION, add_video_to_database, \
+    video_list
 
 from hotkeys import HotkeyThread
 
@@ -46,13 +47,24 @@ class MainWindow(QMainWindow, Ui_MainWindow):
 
     def updateVideosList(self) -> None:
         self.videosList.setColumnCount(4)
-        # self.videosList.setRowCount(1)
 
         self.videosList.setHorizontalHeaderLabels(["", "Название", "Статус", ""])
         self.videosList.setColumnWidth(0, 64)
         self.videosList.setColumnWidth(1, 110)
         self.videosList.setColumnWidth(2, 52)
         self.videosList.setColumnWidth(3, 42)
+
+        global video_list
+        print(video_list)
+        for i in range(len(video_list)):
+            last_elem = self.videosList.rowCount() - 1
+            label = QLabel()
+            label.setPixmap(video_list[i][1])
+            label.setScaledContents(True)
+
+            self.videosList.setItem(last_elem, 1, QTableWidgetItem(video_list[i][0]))
+            self.videosList.setCellWidget(last_elem, 2, QProgressBar())
+            self.videosList.setCellWidget(last_elem, 0, label)
 
     def addVideoToTable(self, video_info) -> None:
         try:
@@ -72,6 +84,8 @@ class MainWindow(QMainWindow, Ui_MainWindow):
             self.videosList.setCellWidget(last_elem, 2, QProgressBar())
             self.videosList.setCellWidget(last_elem, 3, button)
             self.videosList.setCellWidget(last_elem, 0, label)
+
+            add_video_to_database(video_info.get("title", ""), "")
         except Exception as e:
             print(e)
 
@@ -154,14 +168,6 @@ class MainWindow(QMainWindow, Ui_MainWindow):
     }""")
         self.MoreButton.clicked.connect(self.openMoreMenu)
 
-        capsule_action = QAction("Капсула времени", self)
-        capsule_action.triggered.connect(lambda: self.webView.setUrl(QUrl("https://www.youtube.com/")))
-        self.more_menu.addAction(capsule_action)
-
-        multiload_action = QAction("Множ. загрузка", self)
-        multiload_action.triggered.connect(lambda: self.webView.setUrl(QUrl("https://www.youtube.com/")))
-        self.more_menu.addAction(multiload_action)
-
         settings_action = QAction("Настройки", self)
         settings_action.triggered.connect(lambda: self.create_settings_action.emit())
         self.more_menu.addAction(settings_action)
@@ -177,19 +183,27 @@ class MainWindow(QMainWindow, Ui_MainWindow):
         self.more_menu.exec(self.MoreButton.mapToGlobal(self.MoreButton.rect().bottomLeft()))
 
     def setupButtons(self) -> None:
-        self.CloseButton.clicked.connect(lambda: self.hide())
+        self.CloseButton.clicked.connect(self.close_app)
         self.HideButton.clicked.connect(lambda: self.showMinimized())
+
+    def close_app(self):
+        global tray_option
+        if tray_option == 0:
+            self.hide()
+        elif tray_option == 1:
+            self.close()
 
 
 class AboutWindow(QWidget, About_Ui):
     def __init__(self):
         super().__init__()
-        # uic.loadUi("about.ui", self)
         self.setupUi(self)
         self.old_pos = self.pos()
         self.is_mouse_pressed = False
         self.setWindowFlag(Qt.WindowType.FramelessWindowHint)
         self.setAttribute(Qt.WidgetAttribute.WA_TranslucentBackground)
+
+        self.version.setText(f"{self.version.text()} {APP_VERSION}")
 
         self.CloseButton.clicked.connect(lambda: self.close())
         self.HideButton.clicked.connect(lambda: self.showMinimized())
@@ -237,11 +251,11 @@ class SettingsWindow(QWidget, Settings_Ui):
 
     def editFFmpegPath(self) -> None:
         global ffmpeg_path
-        ffmpeg_path = QFileDialog.getOpenFileName()
+        ffmpeg_path = QFileDialog.getOpenFileName()[0]
         self.FFmpegPath.setText(ffmpeg_path)
 
     def applySettings(self):
-        updateSettings((self.savePath.text(), self.trayComboBox.currentIndex()))
+        updateSettings((self.savePath.text(), self.trayComboBox.currentIndex(), self.FFmpegPath.text()))
 
     def mousePressEvent(self, a0) -> None:
         self.old_pos = a0.globalPosition().toPoint()
@@ -281,7 +295,7 @@ class ConfirmWindow(QWidget, Loading_Confirm_Ui):
 
     def download_file(self):
         video_info = dict()
-        video_info["title"] = self.video_info.get("title", "Не удалось получить название")
+        video_info["title"] = self.fileName.text()
         video_info["thumbnail"] = load_image_from_url(self.video_info.get("thumbnail", ""))
         video_info["directory"] = directory_to_save
         video_info["url"] = self.video_info.get("original_url", "")
@@ -297,11 +311,11 @@ class ConfirmWindow(QWidget, Loading_Confirm_Ui):
         if self.video_format["is_video"]:
             for f in reversed(sorted(self.video_format["formats"])):
                 self.formatBox.addItem(f"{f}p")
-        else:
-            self.formatBox.addItem("Только аудио")
-
-        for extension in sorted(self.video_format["extensions"]):
-            self.extensionBox.addItem(extension)
+            for extension in ("mp4", "mov", "mkv", "m4v", "avi", "flv", "m2ts"):
+                self.extensionBox.addItem(extension)
+        elif not self.video_format["is_video"]:
+            for extension in ("mp3",):
+                self.extensionBox.addItem(extension)
 
         self.savePath.setText(f"{self.savePath.text()} {directory_to_save}")
 

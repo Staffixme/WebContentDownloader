@@ -24,7 +24,6 @@ class AppManager:
         splash_screen = QSplashScreen(QPixmap("icons/splash_screen2.png"))
         splash_screen.show()
         splash_screen.showMessage("Загрузка...", color=QColor("white"))
-
         self.quick_search = QuickSearch()
         self.quicksearch_hotkey = HotkeyThread("ctrl+q")
         self.quicksearch_hotkey.hotkey_triggered.connect(self.openQuickSearch)
@@ -34,8 +33,6 @@ class AppManager:
 
         self.main_window = MainWindow()
         self.main_window.show()
-
-        # keyboard.add_hotkey("ctrl+q", self.openQuickSearch)
 
         self.main_window.create_about_action.connect(self.openAboutWindow)
         self.main_window.create_settings_action.connect(self.openSettingsWindow)
