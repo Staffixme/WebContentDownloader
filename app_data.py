@@ -78,6 +78,7 @@ with sqlite3.connect("WebContent Downloader/Local databases/videos.sqlite") as v
 
 
 def add_video_to_database(title: str, thumbanail: str):
+    print(1)
     with sqlite3.connect("WebContent Downloader/Local databases/videos.sqlite") as vdb:
         cur = vdb.cursor()
         cur.execute(f"""

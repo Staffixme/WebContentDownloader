@@ -24,8 +24,7 @@ def getVideoInfo(url: str) -> tuple:
     allowed_formats = {"144", "240", "360", "480", "720", "1080", "1440", "2160"}
 
     for f in video_info["formats"]:
-        format_id = f['format_id']
-        quality = f.get('height', '')  # Высота для видео или 'audio' для аудио
+        quality = f.get('height', '')
         if quality and str(quality) in allowed_formats:
             formats.add(str(quality))
 

@@ -4,7 +4,7 @@ import subprocess
 from PyQt6.QtWidgets import (QApplication, QWidget, QMainWindow, QSystemTrayIcon, QMenu, QTableWidgetItem,
                              QHeaderView, QFileDialog, QProgressBar, QLabel, QToolButton, QComboBox)
 from PyQt6.QtGui import QIcon, QAction, QPixmap, QImage
-from PyQt6.QtCore import Qt, QUrl, QPoint, pyqtSignal
+from PyQt6.QtCore import Qt, QUrl, QPoint, pyqtSignal, pyqtSlot
 from PyQt6 import uic
 from PyQt6.QtWebEngineWidgets import QWebEngineView
 
@@ -91,13 +91,34 @@ class MainWindow(QMainWindow, Ui_MainWindow):
 
     def setupBrowser(self) -> None:
         self.webView = QWebEngineView()
-        self.webView.urlChanged.connect(lambda: self.lineEdit.setText(self.webView.url().toString()))
+        self.webView.urlChanged.connect(self.change_url_text)
+        print(str(self.webView.title()))
+        self.webView.loadProgress.connect(self.progressbar_update)
+        self.webView.loadStarted.connect(self.progressbar_start)
+        self.webView.loadFinished.connect(self.progressbar_finish)
         self.refreshButton.clicked.connect(self.webView.reload)
         self.backButton.clicked.connect(self.webView.back)
         self.backButton.clicked.connect(self.webView.forward)
         self.browseButton_2.clicked.connect(lambda: self.webView.setUrl(QUrl(self.lineEdit.text())))
         self.webBrowserHandler.addWidget(self.webView)
         self.webView.setUrl(QUrl.fromLocalFile("/index.html"))
+
+    def change_url_text(self):
+        self.lineEdit.setText(self.webView.url().toString())
+
+
+    @pyqtSlot(int)
+    def progressbar_update(self, progress):
+        self.progressBar.setValue(progress)
+
+    @pyqtSlot()
+    def progressbar_start(self):
+        self.progressBar.show()
+
+    @pyqtSlot()
+    def progressbar_finish(self):
+        self.activeCount.setText(str(self.webView.title()))
+        self.progressBar.show()
 
     def mousePressEvent(self, a0) -> None:
         self.old_pos = a0.globalPosition().toPoint()
@@ -307,12 +328,12 @@ class ConfirmWindow(QWidget, Loading_Confirm_Ui):
         self.fileName.setText(self.video_info.get("title", "Не удалось получить название"))
         self.formatText.setText(f"{self.formatText.text()} {self.video_info.get("ext", "Неизвестно")}")
         self.durationText.setText(f"{self.durationText.text()} {self.video_info.get("duration_string", "Неизвестно")}")
-
+        for extension in ("mp4", "mov", "mkv", "m4v", "avi", "flv", "m2ts"):
+            self.extensionBox.addItem(extension)
         if self.video_format["is_video"]:
             for f in reversed(sorted(self.video_format["formats"])):
                 self.formatBox.addItem(f"{f}p")
-            for extension in ("mp4", "mov", "mkv", "m4v", "avi", "flv", "m2ts"):
-                self.extensionBox.addItem(extension)
+
         elif not self.video_format["is_video"]:
             for extension in ("mp3",):
                 self.extensionBox.addItem(extension)
@@ -349,14 +370,7 @@ class QuickSearch(QWidget, Quick_Search_Ui):
         self.setAttribute(Qt.WidgetAttribute.WA_TranslucentBackground)
 
         self.closeButton.clicked.connect(lambda: self.hide())
-
-        self.hide_hotkey = HotkeyThread("esc")
-        self.hide_hotkey.hotkey_triggered.connect(lambda: self.closeQuickSearch)
-        self.hide_hotkey.start()
-
-        self.search_hotkey = HotkeyThread("enter")
-        self.search_hotkey.hotkey_triggered.connect(self.search)
-        self.search_hotkey.start()
+        self.searchButton.clicked.connect(self.search)
 
     def closeQuickSearch(self):
         self.lineEdit.setText("")
