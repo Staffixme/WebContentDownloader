@@ -46,11 +46,10 @@ class MainWindow(QMainWindow, Ui_MainWindow):
 
     def check_ffmpeg(self):
         if not ffmpeg_path:
-            message = QMessageBox(self,
+            message = QMessageBox.warning(self, "FFmpeg не найден",
                                   "FFmpeg не найден.\nДля правильной работы программы нужен FFmpeg. Если он установлен,"
                                   " то укажите путь в настройках. Если FFmpeg не установлен, то вы можете установить"
                                   " его с официального сайта ffmpeg.org")
-            message_exec = message.exec()
 
     def update_videos_list(self) -> None:
         self.videosList.setColumnCount(4)
