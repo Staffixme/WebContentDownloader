@@ -22,3 +22,9 @@ Web Content Downloader is a program for downloading videos and music from the In
 - Quick Search window (keyboard shortcut ctrl + q)
 - Uploading videos in different extensions (mp4, mov, avi, flv, etc.)
 - and more...
+
+## FaQ
+1. Why does Windows Defender mark a program as a virus?
+- Due to the features of pyintsaller, through which the .exe file is created, the program may be marked as a virus.
+2. I clicked the download button, but the program stopped responding. What should I do?
+- Just wait, when you click the "download" button, the program stops responding to user actions until it receives information about the video.
