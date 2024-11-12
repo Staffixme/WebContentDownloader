@@ -1,11 +1,9 @@
-import os
-from os import path, startfile
+from os import startfile
 
-from PyQt6.QtWidgets import (QApplication, QWidget, QMainWindow, QSystemTrayIcon, QMenu, QTableWidgetItem,
-                             QHeaderView, QFileDialog, QProgressBar, QLabel, QToolButton, QComboBox, QMessageBox)
-from PyQt6.QtGui import QIcon, QAction, QPixmap, QImage
+from PyQt6.QtWidgets import (QWidget, QMainWindow, QMenu, QTableWidgetItem,
+                             QFileDialog, QProgressBar, QLabel, QToolButton, QMessageBox)
+from PyQt6.QtGui import QIcon, QAction, QPixmap
 from PyQt6.QtCore import Qt, QUrl, QPoint, pyqtSignal, pyqtSlot
-from PyQt6 import uic
 from PyQt6.QtWebEngineWidgets import QWebEngineView
 
 from app_data import directory_to_save, update_settings, tray_option, ffmpeg_path, APP_VERSION, add_video_to_database, \
@@ -13,10 +11,8 @@ from app_data import directory_to_save, update_settings, tray_option, ffmpeg_pat
 
 from webbrowser import open
 
-from hotkeys import HotkeyThread
-
 from main_window import Ui_MainWindow
-from about import Ui_Form as About_Ui
+from scripts.about import Ui_Form as About_Ui
 from loading_confirm import Ui_Form as Loading_Confirm_Ui
 from settings import Ui_Form as Settings_Ui
 from quick_search import Ui_Form as Quick_Search_Ui
