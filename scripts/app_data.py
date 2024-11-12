@@ -15,7 +15,7 @@ ffmpeg_path = ""
 video_list = list()
 
 
-def findFFmpeg():
+def find_ffmpeg():
     drives = [f"{d}:\\" for d in string.ascii_uppercase if os.path.exists(f"{d}:\\")]
 
     for drive in drives:
@@ -25,7 +25,12 @@ def findFFmpeg():
     return ""
 
 
-with sqlite3.connect("app_settings.sqlite") as db:
+if not os.path.isdir(os.path.join("..", "WebContent App")):
+    os.mkdir(os.path.join("..", "WebContent App"))
+    os.mkdir(os.path.join("..", "WebContent App", "Thumbnails"))
+    os.mkdir(os.path.join("..", "WebContent App", "Local databases"))
+
+with sqlite3.connect("../WebContent App/Local databases/app_settings.sqlite") as db:
     cur = db.cursor()
     cur.execute("""
     CREATE TABLE IF NOT EXISTS App_settings (
@@ -42,24 +47,17 @@ with sqlite3.connect("app_settings.sqlite") as db:
     """).fetchall()
     if not settings:
         cur.execute(f"""
-        INSERT INTO App_settings(Id, Directory_to_save, Ffmpeg_path) VALUES(0, "", "{findFFmpeg()}")
+        INSERT INTO App_settings(Id, Directory_to_save, Ffmpeg_path) VALUES(0, "", "{find_ffmpeg()}")
         """)
         settings = cur.execute("""
             SELECT * FROM App_settings
             WHERE Id = 0
             """).fetchall()
-    print(directory_to_save, tray_option, settings)
-print(settings[0][1])
 directory_to_save = settings[0][1]
 tray_option = settings[0][2]
 ffmpeg_path = settings[0][3]
 
-if not os.path.isdir(os.path.join(os.getcwd(), "WebContent Downloader")):
-    os.mkdir(os.path.join(os.getcwd(), "WebContent Downloader"))
-    os.mkdir(os.path.join(os.getcwd(), "WebContent Downloader", "Thumbnails"))
-    os.mkdir(os.path.join(os.getcwd(), "WebContent Downloader", "Local databases"))
-
-with sqlite3.connect("WebContent Downloader/Local databases/videos.sqlite") as vdb:
+with sqlite3.connect("../WebContent App/Local databases/videos.sqlite") as vdb:
     cur = vdb.cursor()
     cur.execute("""
     CREATE TABLE IF NOT EXISTS Videos (
@@ -73,25 +71,22 @@ with sqlite3.connect("WebContent Downloader/Local databases/videos.sqlite") as v
     SELECT * FROM Videos
     """).fetchall()
     for i in range(len(videos)):
-        print(i, i[0][1])
-        video_list.append(videos[0][i])
+        video_list.append(videos[i])
 
 
-def add_video_to_database(title: str, thumbanail: str):
-    print(1)
-    with sqlite3.connect("WebContent Downloader/Local databases/videos.sqlite") as vdb:
+def add_video_to_database(title: str, thumbnail: str):
+    with sqlite3.connect("../WebContent App/Local databases/videos.sqlite") as vdb:
         cur = vdb.cursor()
         cur.execute(f"""
-                INSERT INTO App_settings(title, thumbnail) VALUES("{title}", "{thumbanail}")
+                INSERT INTO Videos(title, thumbnail) VALUES("{title}", "{thumbnail}")
                 """)
 
 
-def updateSettings(settings: tuple):
+def update_settings(settings: tuple):
     dir = settings[0]
     tray = settings[1]
     ffmpeg_dir = settings[2]
-    print(dir, tray)
-    with sqlite3.connect("app_settings.sqlite") as db:
+    with sqlite3.connect("../WebContent App/Local databases/app_settings.sqlite") as db:
         cur = db.cursor()
         cur.execute(f"""
         UPDATE App_settings

@@ -1,4 +1,3 @@
-import pprint
 import requests
 from PyQt6.QtGui import QPixmap
 from PyQt6.QtCore import QByteArray
@@ -6,7 +5,7 @@ from PyQt6.QtCore import QByteArray
 import yt_dlp
 
 
-def getVideoInfo(url: str) -> tuple:
+def get_video_info(url: str) -> tuple:
     with yt_dlp.YoutubeDL() as viewer:
         video_info = viewer.extract_info(url, download=False)
 
@@ -42,6 +41,6 @@ def load_image_from_url(url) -> QPixmap:
             return pixmap
         else:
             print("Ошибка загрузки изображения:", response.status_code)
-            return QPixmap("icons/unknown_preview.png")
+            return QPixmap("../icons/unknown_preview.png")
     else:
-        return QPixmap("icons/unknown_preview.png")
+        return QPixmap("../icons/unknown_preview.png")

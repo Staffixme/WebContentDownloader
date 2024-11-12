@@ -1,3 +1,5 @@
 PyQt6==6.7.1
 PyQT6-WebEngine==6.7.0
 yt-dlp==2024.10.22
+keyboard==0.13.5
+requests==2.32.3

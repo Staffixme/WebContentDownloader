@@ -23,7 +23,11 @@
    </size>
   </property>
   <property name="windowTitle">
-   <string>MainWindow</string>
+   <string>WebContent Downloader</string>
+  </property>
+  <property name="windowIcon">
+   <iconset resource="resources.qrc">
+    <normaloff>:/icons/icons/downloader_icon.png</normaloff>:/icons/icons/downloader_icon.png</iconset>
   </property>
   <property name="styleSheet">
    <string notr="true">#titleBar{
@@ -53,6 +57,9 @@ border-top: 1px solid #C1C1C1
      <height>710</height>
     </size>
    </property>
+   <property name="styleSheet">
+    <string notr="true"/>
+   </property>
    <widget class="QFrame" name="titleBar">
     <property name="geometry">
      <rect>
@@ -74,7 +81,7 @@ background-color: rgba(255, 255, 255, 0);
 
 }
 
-#searchButton{
+#download_button{
 background-color: rgb(14, 149, 148);
 border-radius: 4px;
 }</string>
@@ -98,7 +105,7 @@ border-radius: 4px;
       <string/>
      </property>
      <property name="pixmap">
-      <pixmap resource="resources.qrc">icons/webcontentdownloader_logo_dark.png</pixmap>
+      <pixmap>icons/webcontentdownloader_logo_dark.png</pixmap>
      </property>
      <property name="scaledContents">
       <bool>false</bool>
@@ -302,13 +309,25 @@ border-radius: 4px;
           <verstretch>0</verstretch>
          </sizepolicy>
         </property>
+        <property name="font">
+         <font>
+          <family>Roboto Mono</family>
+         </font>
+        </property>
+        <property name="styleSheet">
+         <string notr="true">border-radius: 4px;
+border: 1px solid #C1C1C1</string>
+        </property>
         <property name="text">
          <string/>
+        </property>
+        <property name="placeholderText">
+         <string>Введите ссылку</string>
         </property>
        </widget>
       </item>
       <item>
-       <widget class="QToolButton" name="browseButton_2">
+       <widget class="QToolButton" name="search_button">
         <property name="toolTip">
          <string>Поиск</string>
         </property>
@@ -328,7 +347,7 @@ border-radius: 4px;
        </widget>
       </item>
       <item>
-       <widget class="QToolButton" name="searchButton">
+       <widget class="QToolButton" name="download_button">
         <property name="sizePolicy">
          <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
           <horstretch>0</horstretch>
@@ -383,7 +402,95 @@ border-radius: 4px;
       </layout>
      </item>
      <item>
-      <widget class="QTableWidget" name="videosList"/>
+      <widget class="QTableWidget" name="videosList">
+       <property name="styleSheet">
+        <string notr="true">QFrame{
+background-color: white;
+color: black;
+}</string>
+       </property>
+       <property name="frameShape">
+        <enum>QFrame::StyledPanel</enum>
+       </property>
+       <property name="verticalScrollBarPolicy">
+        <enum>Qt::ScrollBarAlwaysOn</enum>
+       </property>
+       <property name="horizontalScrollBarPolicy">
+        <enum>Qt::ScrollBarAlwaysOff</enum>
+       </property>
+       <property name="editTriggers">
+        <set>QAbstractItemView::NoEditTriggers</set>
+       </property>
+       <property name="gridStyle">
+        <enum>Qt::SolidLine</enum>
+       </property>
+       <property name="columnCount">
+        <number>4</number>
+       </property>
+       <attribute name="horizontalHeaderDefaultSectionSize">
+        <number>68</number>
+       </attribute>
+       <attribute name="horizontalHeaderMinimumSectionSize">
+        <number>24</number>
+       </attribute>
+       <attribute name="horizontalHeaderShowSortIndicator" stdset="0">
+        <bool>false</bool>
+       </attribute>
+       <attribute name="horizontalHeaderStretchLastSection">
+        <bool>true</bool>
+       </attribute>
+       <column>
+        <property name="text">
+         <string/>
+        </property>
+        <property name="font">
+         <font>
+          <family>Roboto Mono</family>
+         </font>
+        </property>
+        <property name="textAlignment">
+         <set>AlignLeading|AlignVCenter</set>
+        </property>
+        <property name="icon">
+         <iconset resource="resources.qrc">
+          <normaloff>:/icons/icons/image.png</normaloff>:/icons/icons/image.png</iconset>
+        </property>
+       </column>
+       <column>
+        <property name="text">
+         <string>Название</string>
+        </property>
+        <property name="font">
+         <font>
+          <family>Roboto Mono</family>
+         </font>
+        </property>
+       </column>
+       <column>
+        <property name="text">
+         <string>Статус</string>
+        </property>
+        <property name="font">
+         <font>
+          <family>Roboto Mono</family>
+         </font>
+        </property>
+       </column>
+       <column>
+        <property name="text">
+         <string/>
+        </property>
+        <property name="font">
+         <font>
+          <family>Roboto Mono</family>
+         </font>
+        </property>
+        <property name="icon">
+         <iconset resource="resources.qrc">
+          <normaloff>:/icons/icons/directory.png</normaloff>:/icons/icons/directory.png</iconset>
+        </property>
+       </column>
+      </widget>
      </item>
     </layout>
    </widget>
@@ -402,59 +509,49 @@ border-radius: 4px;
     <property name="frameShadow">
      <enum>QFrame::Raised</enum>
     </property>
-    <widget class="QLabel" name="activeCount">
+    <widget class="QLabel" name="pageName">
      <property name="geometry">
       <rect>
        <x>10</x>
        <y>0</y>
-       <width>181</width>
+       <width>521</width>
        <height>31</height>
       </rect>
      </property>
      <property name="font">
       <font>
+       <family>Roboto Mono</family>
        <pointsize>11</pointsize>
       </font>
      </property>
      <property name="text">
-      <string>Активные загрузки</string>
+      <string>Название страницы</string>
      </property>
     </widget>
     <widget class="QProgressBar" name="progressBar">
      <property name="geometry">
       <rect>
-       <x>830</x>
-       <y>13</y>
-       <width>240</width>
+       <x>629</x>
+       <y>14</y>
+       <width>441</width>
        <height>4</height>
       </rect>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">#progressBar{
+	background-color: #D2D2D2;
+	border-radius: 5px;
+}
+
+#progressBar:chunk{
+	background-color: #0E9594;
+}</string>
      </property>
      <property name="value">
       <number>0</number>
      </property>
      <property name="textVisible">
       <bool>false</bool>
-     </property>
-    </widget>
-    <widget class="QLabel" name="activeCount_2">
-     <property name="geometry">
-      <rect>
-       <x>680</x>
-       <y>0</y>
-       <width>131</width>
-       <height>31</height>
-      </rect>
-     </property>
-     <property name="font">
-      <font>
-       <pointsize>11</pointsize>
-      </font>
-     </property>
-     <property name="text">
-      <string>0/0 завершено</string>
-     </property>
-     <property name="alignment">
-      <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
      </property>
     </widget>
    </widget>

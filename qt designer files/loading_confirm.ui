@@ -90,7 +90,7 @@ background-color: rgba(255, 255, 255, 0);
         <string>...</string>
        </property>
        <property name="icon">
-        <iconset resource="resources.qrc">
+        <iconset>
          <normaloff>:/icons/icons/hide.png</normaloff>:/icons/icons/hide.png</iconset>
        </property>
        <property name="popupMode">
@@ -116,7 +116,7 @@ background-color: rgba(255, 255, 255, 0);
         <string>...</string>
        </property>
        <property name="icon">
-        <iconset resource="resources.qrc">
+        <iconset>
          <normaloff>:/icons/icons/close.png</normaloff>:/icons/icons/close.png</iconset>
        </property>
        <property name="popupMode">
@@ -140,6 +140,7 @@ background-color: rgba(255, 255, 255, 0);
     </property>
     <property name="font">
      <font>
+      <family>Roboto Mono Medium</family>
       <pointsize>11</pointsize>
      </font>
     </property>
@@ -177,6 +178,7 @@ background-color: rgba(255, 255, 255, 0);
     </property>
     <property name="font">
      <font>
+      <family>Roboto Mono Medium</family>
       <pointsize>9</pointsize>
       <weight>50</weight>
       <bold>false</bold>
@@ -196,12 +198,13 @@ color: white;</string>
      <rect>
       <x>20</x>
       <y>15</y>
-      <width>321</width>
+      <width>401</width>
       <height>21</height>
      </rect>
     </property>
     <property name="font">
      <font>
+      <family>Roboto Mono</family>
       <pointsize>9</pointsize>
      </font>
     </property>
@@ -241,7 +244,7 @@ color: white;</string>
      <string/>
     </property>
     <property name="scaledContents">
-     <bool>false</bool>
+     <bool>true</bool>
     </property>
    </widget>
    <widget class="QLineEdit" name="fileName">
@@ -255,14 +258,15 @@ color: white;</string>
     </property>
     <property name="font">
      <font>
+      <family>Roboto Mono Medium</family>
       <pointsize>11</pointsize>
-      <weight>75</weight>
-      <bold>true</bold>
+      <weight>50</weight>
+      <bold>false</bold>
      </font>
     </property>
     <property name="styleSheet">
      <string notr="true">background-color: rgba(255, 255, 255, 0);
-border: none;</string>
+border-radius: 5px;</string>
     </property>
     <property name="text">
      <string>Название файла</string>
@@ -282,6 +286,7 @@ border: none;</string>
     </property>
     <property name="font">
      <font>
+      <family>Roboto Mono</family>
       <pointsize>9</pointsize>
      </font>
     </property>
@@ -289,7 +294,7 @@ border: none;</string>
      <string notr="true">color: #5D6669</string>
     </property>
     <property name="text">
-     <string>Расширение:</string>
+     <string>Оригинальное расширение:</string>
     </property>
    </widget>
    <widget class="QLabel" name="durationText">
@@ -303,6 +308,7 @@ border: none;</string>
     </property>
     <property name="font">
      <font>
+      <family>Roboto Mono</family>
       <pointsize>9</pointsize>
      </font>
     </property>
@@ -319,7 +325,7 @@ border: none;</string>
       <x>360</x>
       <y>30</y>
       <width>251</width>
-      <height>291</height>
+      <height>211</height>
      </rect>
     </property>
     <layout class="QVBoxLayout" name="verticalLayout">
@@ -341,7 +347,7 @@ border: none;</string>
         <string notr="true">QComboBox{
 height: 30px;
 border-radius: 3px;
-background-color: white;
+background-color: qlineargradient(spread:pad, x1:0.5, y1:0, x2:0.5, y2:1, stop:0 rgba(243, 243, 243, 255), stop:1 rgba(239, 239, 239, 255));
 border: 1px solid #C1C1C1
 }
 
@@ -384,6 +390,7 @@ background-color: rgb(14, 149, 148);
         </property>
         <property name="font">
          <font>
+          <family>Roboto Mono</family>
           <pointsize>9</pointsize>
          </font>
         </property>
@@ -421,7 +428,7 @@ background-color: rgb(14, 149, 148);
         <string notr="true">QComboBox{
 height: 30px;
 border-radius: 3px;
-background-color: white;
+background-color: qlineargradient(spread:pad, x1:0.5, y1:0, x2:0.5, y2:1, stop:0 rgba(243, 243, 243, 255), stop:1 rgba(239, 239, 239, 255));
 border: 1px solid #C1C1C1
 }
 
@@ -464,6 +471,7 @@ background-color: rgb(14, 149, 148);
         </property>
         <property name="font">
          <font>
+          <family>Roboto Mono</family>
           <pointsize>9</pointsize>
          </font>
         </property>
@@ -494,7 +502,7 @@ background-color: rgb(14, 149, 148);
        <property name="minimumSize">
         <size>
          <width>0</width>
-         <height>52</height>
+         <height>62</height>
         </size>
        </property>
        <property name="styleSheet">
@@ -528,9 +536,10 @@ image: url(:/icons/icons/checked.png);
         </property>
         <property name="font">
          <font>
+          <family>Roboto Mono Medium</family>
           <pointsize>9</pointsize>
-          <weight>75</weight>
-          <bold>true</bold>
+          <weight>50</weight>
+          <bold>false</bold>
          </font>
         </property>
         <property name="text">
@@ -573,11 +582,12 @@ image: url(:/icons/icons/checked.png);
           <x>40</x>
           <y>10</y>
           <width>211</width>
-          <height>41</height>
+          <height>51</height>
          </rect>
         </property>
         <property name="font">
          <font>
+          <family>Roboto Mono</family>
           <pointsize>8</pointsize>
           <weight>50</weight>
           <bold>false</bold>
@@ -591,95 +601,6 @@ image: url(:/icons/icons/checked.png);
         </property>
         <property name="wordWrap">
          <bool>true</bool>
-        </property>
-       </widget>
-      </widget>
-     </item>
-     <item>
-      <widget class="QFrame" name="frame_4">
-       <property name="sizePolicy">
-        <sizepolicy hsizetype="Preferred" vsizetype="Maximum">
-         <horstretch>0</horstretch>
-         <verstretch>0</verstretch>
-        </sizepolicy>
-       </property>
-       <property name="minimumSize">
-        <size>
-         <width>0</width>
-         <height>52</height>
-        </size>
-       </property>
-       <property name="styleSheet">
-        <string notr="true">QCheckBox:indicator{
-Width: 22px;
-Height: 22px;
-border: 1px solid #C1C1C1;
-background-color: qlineargradient(spread:pad, x1:0.5, y1:0, x2:0.5, y2:1, stop:0 rgba(243, 243, 243, 255), stop:1 rgba(239, 239, 239, 255));
-border-radius: 3px;
-}
-
-QCheckBox:indicator:checked{
-image: url(:/icons/icons/checked.png);
-}
-</string>
-       </property>
-       <property name="frameShape">
-        <enum>QFrame::StyledPanel</enum>
-       </property>
-       <property name="frameShadow">
-        <enum>QFrame::Raised</enum>
-       </property>
-       <widget class="QLabel" name="label_9">
-        <property name="geometry">
-         <rect>
-          <x>38</x>
-          <y>0</y>
-          <width>211</width>
-          <height>31</height>
-         </rect>
-        </property>
-        <property name="font">
-         <font>
-          <pointsize>9</pointsize>
-          <weight>75</weight>
-          <bold>true</bold>
-         </font>
-        </property>
-        <property name="text">
-         <string>Опубликовать в капсулу времени</string>
-        </property>
-        <property name="wordWrap">
-         <bool>true</bool>
-        </property>
-       </widget>
-       <widget class="QCheckBox" name="archiveBox">
-        <property name="geometry">
-         <rect>
-          <x>0</x>
-          <y>0</y>
-          <width>31</width>
-          <height>31</height>
-         </rect>
-        </property>
-        <property name="font">
-         <font>
-          <pointsize>8</pointsize>
-         </font>
-        </property>
-        <property name="text">
-         <string/>
-        </property>
-        <property name="iconSize">
-         <size>
-          <width>16</width>
-          <height>16</height>
-         </size>
-        </property>
-        <property name="checked">
-         <bool>false</bool>
-        </property>
-        <property name="tristate">
-         <bool>false</bool>
         </property>
        </widget>
       </widget>

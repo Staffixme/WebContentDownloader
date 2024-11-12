@@ -62,7 +62,7 @@ class Ui_Form(object):
         sizePolicy.setHeightForWidth(self.HideButton.sizePolicy().hasHeightForWidth())
         self.HideButton.setSizePolicy(sizePolicy)
         icon = QtGui.QIcon()
-        icon.addPixmap(QtGui.QPixmap("icons/hide.png"), QtGui.QIcon.Mode.Normal, QtGui.QIcon.State.Off)
+        icon.addPixmap(QtGui.QPixmap("../icons/hide.png"), QtGui.QIcon.Mode.Normal, QtGui.QIcon.State.Off)
         self.HideButton.setIcon(icon)
         self.HideButton.setPopupMode(QtWidgets.QToolButton.ToolButtonPopupMode.DelayedPopup)
         self.HideButton.setToolButtonStyle(QtCore.Qt.ToolButtonStyle.ToolButtonIconOnly)
@@ -75,7 +75,7 @@ class Ui_Form(object):
         sizePolicy.setHeightForWidth(self.CloseButton.sizePolicy().hasHeightForWidth())
         self.CloseButton.setSizePolicy(sizePolicy)
         icon1 = QtGui.QIcon()
-        icon1.addPixmap(QtGui.QPixmap("icons/close.png"), QtGui.QIcon.Mode.Normal, QtGui.QIcon.State.Off)
+        icon1.addPixmap(QtGui.QPixmap("../icons/close.png"), QtGui.QIcon.Mode.Normal, QtGui.QIcon.State.Off)
         self.CloseButton.setIcon(icon1)
         self.CloseButton.setPopupMode(QtWidgets.QToolButton.ToolButtonPopupMode.DelayedPopup)
         self.CloseButton.setToolButtonStyle(QtCore.Qt.ToolButtonStyle.ToolButtonIconOnly)
@@ -84,6 +84,7 @@ class Ui_Form(object):
         self.formTitle = QtWidgets.QLabel(parent=self.titleBar)
         self.formTitle.setGeometry(QtCore.QRect(10, 3, 211, 21))
         font = QtGui.QFont()
+        font.setFamily("Roboto Mono Medium")
         font.setPointSize(11)
         self.formTitle.setFont(font)
         self.formTitle.setStyleSheet("color: #264653")
@@ -96,6 +97,7 @@ class Ui_Form(object):
         self.downloadButton = QtWidgets.QPushButton(parent=self.bottomBar)
         self.downloadButton.setGeometry(QtCore.QRect(520, 10, 121, 31))
         font = QtGui.QFont()
+        font.setFamily("Roboto Mono Medium")
         font.setPointSize(9)
         font.setBold(False)
         font.setWeight(50)
@@ -105,8 +107,9 @@ class Ui_Form(object):
 "color: white;")
         self.downloadButton.setObjectName("downloadButton")
         self.savePath = QtWidgets.QLabel(parent=self.bottomBar)
-        self.savePath.setGeometry(QtCore.QRect(20, 15, 321, 21))
+        self.savePath.setGeometry(QtCore.QRect(20, 15, 401, 21))
         font = QtGui.QFont()
+        font.setFamily("Roboto Mono")
         font.setPointSize(9)
         self.savePath.setFont(font)
         self.savePath.setObjectName("savePath")
@@ -124,16 +127,18 @@ class Ui_Form(object):
         self.fileName = QtWidgets.QLineEdit(parent=self.background)
         self.fileName.setGeometry(QtCore.QRect(35, 200, 269, 31))
         font = QtGui.QFont()
+        font.setFamily("Roboto Mono Medium")
         font.setPointSize(11)
-        font.setBold(True)
-        font.setWeight(75)
+        font.setBold(False)
+        font.setWeight(50)
         self.fileName.setFont(font)
         self.fileName.setStyleSheet("background-color: rgba(255, 255, 255, 0);\n"
-"border: none;")
+"border-radius: 5px;")
         self.fileName.setObjectName("fileName")
         self.formatText = QtWidgets.QLabel(parent=self.background)
         self.formatText.setGeometry(QtCore.QRect(35, 240, 271, 20))
         font = QtGui.QFont()
+        font.setFamily("Roboto Mono")
         font.setPointSize(9)
         self.formatText.setFont(font)
         self.formatText.setStyleSheet("color: #5D6669")
@@ -141,12 +146,13 @@ class Ui_Form(object):
         self.durationText = QtWidgets.QLabel(parent=self.background)
         self.durationText.setGeometry(QtCore.QRect(35, 265, 271, 20))
         font = QtGui.QFont()
+        font.setFamily("Roboto Mono")
         font.setPointSize(9)
         self.durationText.setFont(font)
         self.durationText.setStyleSheet("color: #5D6669")
         self.durationText.setObjectName("durationText")
         self.verticalLayoutWidget = QtWidgets.QWidget(parent=self.background)
-        self.verticalLayoutWidget.setGeometry(QtCore.QRect(360, 30, 251, 291))
+        self.verticalLayoutWidget.setGeometry(QtCore.QRect(360, 30, 251, 211))
         self.verticalLayoutWidget.setObjectName("verticalLayoutWidget")
         self.verticalLayout = QtWidgets.QVBoxLayout(self.verticalLayoutWidget)
         self.verticalLayout.setContentsMargins(0, 0, 0, 0)
@@ -161,7 +167,7 @@ class Ui_Form(object):
         self.frame_2.setStyleSheet("QComboBox{\n"
 "height: 30px;\n"
 "border-radius: 3px;\n"
-"background-color: white;\n"
+"background-color: qlineargradient(spread:pad, x1:0.5, y1:0, x2:0.5, y2:1, stop:0 rgba(243, 243, 243, 255), stop:1 rgba(239, 239, 239, 255));\n"
 "border: 1px solid #C1C1C1\n"
 "}\n"
 "\n"
@@ -170,7 +176,7 @@ class Ui_Form(object):
 "}\n"
 "\n"
 "QComboBox::down-arrow{\n"
-"image: url(icons/dropdown_arrow.png);\n"
+"image: url(../icons/dropdown_arrow.png);\n"
 "height: 24px;\n"
 "}\n"
 "\n"
@@ -192,6 +198,7 @@ class Ui_Form(object):
         self.label_3 = QtWidgets.QLabel(parent=self.frame_2)
         self.label_3.setGeometry(QtCore.QRect(0, 0, 249, 16))
         font = QtGui.QFont()
+        font.setFamily("Roboto Mono")
         font.setPointSize(9)
         self.label_3.setFont(font)
         self.label_3.setObjectName("label_3")
@@ -209,7 +216,7 @@ class Ui_Form(object):
         self.frame.setStyleSheet("QComboBox{\n"
 "height: 30px;\n"
 "border-radius: 3px;\n"
-"background-color: white;\n"
+"background-color: qlineargradient(spread:pad, x1:0.5, y1:0, x2:0.5, y2:1, stop:0 rgba(243, 243, 243, 255), stop:1 rgba(239, 239, 239, 255));\n"
 "border: 1px solid #C1C1C1\n"
 "}\n"
 "\n"
@@ -218,7 +225,7 @@ class Ui_Form(object):
 "}\n"
 "\n"
 "QComboBox::down-arrow{\n"
-"image: url(icons/dropdown_arrow.png);\n"
+"image: url(../icons/dropdown_arrow.png);\n"
 "height: 24px;\n"
 "}\n"
 "\n"
@@ -240,6 +247,7 @@ class Ui_Form(object):
         self.label_2 = QtWidgets.QLabel(parent=self.frame)
         self.label_2.setGeometry(QtCore.QRect(0, 0, 249, 16))
         font = QtGui.QFont()
+        font.setFamily("Roboto Mono")
         font.setPointSize(9)
         self.label_2.setFont(font)
         self.label_2.setObjectName("label_2")
@@ -253,7 +261,7 @@ class Ui_Form(object):
         sizePolicy.setVerticalStretch(0)
         sizePolicy.setHeightForWidth(self.frame_3.sizePolicy().hasHeightForWidth())
         self.frame_3.setSizePolicy(sizePolicy)
-        self.frame_3.setMinimumSize(QtCore.QSize(0, 52))
+        self.frame_3.setMinimumSize(QtCore.QSize(0, 62))
         self.frame_3.setStyleSheet("QCheckBox:indicator{\n"
 "Width: 22px;\n"
 "Height: 22px;\n"
@@ -263,7 +271,7 @@ class Ui_Form(object):
 "}\n"
 "\n"
 "QCheckBox:indicator:checked{\n"
-"image: url(icons/checked.png);\n"
+"image: url(../icons/checked.png);\n"
 "}\n"
 "")
         self.frame_3.setFrameShape(QtWidgets.QFrame.Shape.StyledPanel)
@@ -272,9 +280,10 @@ class Ui_Form(object):
         self.label_5 = QtWidgets.QLabel(parent=self.frame_3)
         self.label_5.setGeometry(QtCore.QRect(38, 0, 211, 21))
         font = QtGui.QFont()
+        font.setFamily("Roboto Mono Medium")
         font.setPointSize(9)
-        font.setBold(True)
-        font.setWeight(75)
+        font.setBold(False)
+        font.setWeight(50)
         self.label_5.setFont(font)
         self.label_5.setObjectName("label_5")
         self.sponsorBlockBox = QtWidgets.QCheckBox(parent=self.frame_3)
@@ -288,8 +297,9 @@ class Ui_Form(object):
         self.sponsorBlockBox.setTristate(False)
         self.sponsorBlockBox.setObjectName("sponsorBlockBox")
         self.label_6 = QtWidgets.QLabel(parent=self.frame_3)
-        self.label_6.setGeometry(QtCore.QRect(40, 10, 211, 41))
+        self.label_6.setGeometry(QtCore.QRect(40, 10, 211, 51))
         font = QtGui.QFont()
+        font.setFamily("Roboto Mono")
         font.setPointSize(8)
         font.setBold(False)
         font.setWeight(50)
@@ -298,48 +308,6 @@ class Ui_Form(object):
         self.label_6.setWordWrap(True)
         self.label_6.setObjectName("label_6")
         self.verticalLayout.addWidget(self.frame_3)
-        self.frame_4 = QtWidgets.QFrame(parent=self.verticalLayoutWidget)
-        sizePolicy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.Policy.Preferred, QtWidgets.QSizePolicy.Policy.Maximum)
-        sizePolicy.setHorizontalStretch(0)
-        sizePolicy.setVerticalStretch(0)
-        sizePolicy.setHeightForWidth(self.frame_4.sizePolicy().hasHeightForWidth())
-        self.frame_4.setSizePolicy(sizePolicy)
-        self.frame_4.setMinimumSize(QtCore.QSize(0, 52))
-        self.frame_4.setStyleSheet("QCheckBox:indicator{\n"
-"Width: 22px;\n"
-"Height: 22px;\n"
-"border: 1px solid #C1C1C1;\n"
-"background-color: qlineargradient(spread:pad, x1:0.5, y1:0, x2:0.5, y2:1, stop:0 rgba(243, 243, 243, 255), stop:1 rgba(239, 239, 239, 255));\n"
-"border-radius: 3px;\n"
-"}\n"
-"\n"
-"QCheckBox:indicator:checked{\n"
-"image: url(icons/checked.png);\n"
-"}\n"
-"")
-        self.frame_4.setFrameShape(QtWidgets.QFrame.Shape.StyledPanel)
-        self.frame_4.setFrameShadow(QtWidgets.QFrame.Shadow.Raised)
-        self.frame_4.setObjectName("frame_4")
-        self.label_9 = QtWidgets.QLabel(parent=self.frame_4)
-        self.label_9.setGeometry(QtCore.QRect(38, 0, 211, 31))
-        font = QtGui.QFont()
-        font.setPointSize(9)
-        font.setBold(True)
-        font.setWeight(75)
-        self.label_9.setFont(font)
-        self.label_9.setWordWrap(True)
-        self.label_9.setObjectName("label_9")
-        self.archiveBox = QtWidgets.QCheckBox(parent=self.frame_4)
-        self.archiveBox.setGeometry(QtCore.QRect(0, 0, 31, 31))
-        font = QtGui.QFont()
-        font.setPointSize(8)
-        self.archiveBox.setFont(font)
-        self.archiveBox.setText("")
-        self.archiveBox.setIconSize(QtCore.QSize(16, 16))
-        self.archiveBox.setChecked(False)
-        self.archiveBox.setTristate(False)
-        self.archiveBox.setObjectName("archiveBox")
-        self.verticalLayout.addWidget(self.frame_4)
 
         self.retranslateUi(Form)
         QtCore.QMetaObject.connectSlotsByName(Form)
@@ -356,10 +324,9 @@ class Ui_Form(object):
         self.savePath.setText(_translate("Form", "Файл будет сохранен в:"))
         self.fileName.setText(_translate("Form", "Название файла"))
         self.fileName.setPlaceholderText(_translate("Form", "Введите название файла"))
-        self.formatText.setText(_translate("Form", "Расширение:"))
+        self.formatText.setText(_translate("Form", "Оригинальное расширение:"))
         self.durationText.setText(_translate("Form", "Длительность:"))
         self.label_3.setText(_translate("Form", "Формат"))
         self.label_2.setText(_translate("Form", "Расширение"))
         self.label_5.setText(_translate("Form", "Удалить рекламные вставки"))
         self.label_6.setText(_translate("Form", "Удаление рекламных фрагментов из видео на базе SponsorBlock."))
-        self.label_9.setText(_translate("Form", "Опубликовать в капсулу времени"))

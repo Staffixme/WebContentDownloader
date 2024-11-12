@@ -136,6 +136,7 @@ background-color: rgba(255, 255, 255, 0);
     </property>
     <property name="font">
      <font>
+      <family>Roboto Mono Medium</family>
       <pointsize>11</pointsize>
      </font>
     </property>
@@ -173,6 +174,7 @@ background-color: rgba(255, 255, 255, 0);
     </property>
     <property name="font">
      <font>
+      <family>Roboto Mono Medium</family>
       <pointsize>9</pointsize>
       <weight>50</weight>
       <bold>false</bold>
@@ -215,7 +217,7 @@ color: white;</string>
       <x>0</x>
       <y>0</y>
       <width>651</width>
-      <height>310</height>
+      <height>235</height>
      </rect>
     </property>
     <layout class="QVBoxLayout" name="verticalLayout">
@@ -237,99 +239,6 @@ color: white;</string>
      <property name="bottomMargin">
       <number>10</number>
      </property>
-     <item>
-      <widget class="QFrame" name="accountContainer">
-       <property name="sizePolicy">
-        <sizepolicy hsizetype="Minimum" vsizetype="Fixed">
-         <horstretch>0</horstretch>
-         <verstretch>0</verstretch>
-        </sizepolicy>
-       </property>
-       <property name="minimumSize">
-        <size>
-         <width>0</width>
-         <height>65</height>
-        </size>
-       </property>
-       <property name="styleSheet">
-        <string notr="true">.QFrame{
-background-color: qlineargradient(spread:pad, x1:0.5, y1:0, x2:0.5, y2:1, stop:0 rgba(243, 243, 243, 255), stop:1 rgba(239, 239, 239, 255));
-border-radius: 5px;
-border: 1px solid #C1C1C1
-}
-
-QPushButton{
-height: 30px;
-border-radius: 3px;
-background-color: white;
-border: 1px solid #C1C1C1
-}</string>
-       </property>
-       <property name="frameShape">
-        <enum>QFrame::StyledPanel</enum>
-       </property>
-       <property name="frameShadow">
-        <enum>QFrame::Raised</enum>
-       </property>
-       <layout class="QHBoxLayout" name="horizontalLayout" stretch="3,5,2,1">
-        <property name="leftMargin">
-         <number>24</number>
-        </property>
-        <property name="rightMargin">
-         <number>12</number>
-        </property>
-        <item>
-         <widget class="QLabel" name="label">
-          <property name="font">
-           <font>
-            <pointsize>10</pointsize>
-           </font>
-          </property>
-          <property name="text">
-           <string>Мой аккаунт: Гостевой</string>
-          </property>
-         </widget>
-        </item>
-        <item>
-         <spacer name="horizontalSpacer">
-          <property name="orientation">
-           <enum>Qt::Horizontal</enum>
-          </property>
-          <property name="sizeHint" stdset="0">
-           <size>
-            <width>40</width>
-            <height>20</height>
-           </size>
-          </property>
-         </spacer>
-        </item>
-        <item>
-         <widget class="QPushButton" name="loginButton">
-          <property name="sizePolicy">
-           <sizepolicy hsizetype="Minimum" vsizetype="Fixed">
-            <horstretch>0</horstretch>
-            <verstretch>0</verstretch>
-           </sizepolicy>
-          </property>
-          <property name="text">
-           <string>Войти</string>
-          </property>
-         </widget>
-        </item>
-        <item>
-         <widget class="QPushButton" name="pushButton_2">
-          <property name="text">
-           <string/>
-          </property>
-          <property name="icon">
-           <iconset resource="resources.qrc">
-            <normaloff>:/icons/icons/info.png</normaloff>:/icons/icons/info.png</iconset>
-          </property>
-         </widget>
-        </item>
-       </layout>
-      </widget>
-     </item>
      <item>
       <widget class="QFrame" name="closingContainer">
        <property name="sizePolicy">
@@ -397,6 +306,7 @@ background-color: rgb(14, 149, 148);
          <widget class="QLabel" name="label_2">
           <property name="font">
            <font>
+            <family>Roboto Mono</family>
             <pointsize>10</pointsize>
            </font>
           </property>
@@ -420,6 +330,11 @@ background-color: rgb(14, 149, 148);
         </item>
         <item>
          <widget class="QComboBox" name="trayComboBox">
+          <property name="font">
+           <font>
+            <family>Roboto Mono</family>
+           </font>
+          </property>
           <property name="editable">
            <bool>false</bool>
           </property>
@@ -483,6 +398,7 @@ border: 1px solid #C1C1C1
          <widget class="QLabel" name="label_3">
           <property name="font">
            <font>
+            <family>Roboto Mono</family>
             <pointsize>10</pointsize>
            </font>
           </property>
@@ -506,6 +422,11 @@ border: 1px solid #C1C1C1
         </item>
         <item>
          <widget class="QLineEdit" name="savePath">
+          <property name="font">
+           <font>
+            <family>Roboto Mono</family>
+           </font>
+          </property>
           <property name="readOnly">
            <bool>true</bool>
           </property>
@@ -577,6 +498,7 @@ border: 1px solid #C1C1C1
          <widget class="QLabel" name="label_4">
           <property name="font">
            <font>
+            <family>Roboto Mono</family>
             <pointsize>10</pointsize>
            </font>
           </property>
@@ -600,6 +522,11 @@ border: 1px solid #C1C1C1
         </item>
         <item>
          <widget class="QLineEdit" name="FFmpegPath">
+          <property name="font">
+           <font>
+            <family>Roboto Mono</family>
+           </font>
+          </property>
           <property name="readOnly">
            <bool>true</bool>
           </property>
