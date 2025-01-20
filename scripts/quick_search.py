@@ -7,6 +7,7 @@
 
 
 from PyQt6 import QtCore, QtGui, QtWidgets
+from path_to_files import PATH
 
 
 class Ui_Form(object):
@@ -14,7 +15,7 @@ class Ui_Form(object):
         Form.setObjectName("Form")
         Form.resize(551, 41)
         icon = QtGui.QIcon()
-        icon.addPixmap(QtGui.QPixmap("../icons/downloader_icon.png"), QtGui.QIcon.Mode.Normal, QtGui.QIcon.State.Off)
+        icon.addPixmap(QtGui.QPixmap(f"{PATH}/downloader_icon.png"), QtGui.QIcon.Mode.Normal, QtGui.QIcon.State.Off)
         Form.setWindowIcon(icon)
         Form.setWindowOpacity(1.0)
         Form.setStyleSheet("#background{\n"
@@ -40,13 +41,13 @@ class Ui_Form(object):
         self.searchButton = QtWidgets.QToolButton(parent=self.background)
         self.searchButton.setGeometry(QtCore.QRect(10, 9, 24, 24))
         icon1 = QtGui.QIcon()
-        icon1.addPixmap(QtGui.QPixmap("../icons/search.png"), QtGui.QIcon.Mode.Normal, QtGui.QIcon.State.Off)
+        icon1.addPixmap(QtGui.QPixmap(f"{PATH}/search.png"), QtGui.QIcon.Mode.Normal, QtGui.QIcon.State.Off)
         self.searchButton.setIcon(icon1)
         self.searchButton.setObjectName("searchButton")
         self.closeButton = QtWidgets.QToolButton(parent=self.background)
         self.closeButton.setGeometry(QtCore.QRect(520, 9, 24, 24))
         icon2 = QtGui.QIcon()
-        icon2.addPixmap(QtGui.QPixmap("../icons/close.png"), QtGui.QIcon.Mode.Normal, QtGui.QIcon.State.Off)
+        icon2.addPixmap(QtGui.QPixmap(f"{PATH}/close.png"), QtGui.QIcon.Mode.Normal, QtGui.QIcon.State.Off)
         self.closeButton.setIcon(icon2)
         self.closeButton.setObjectName("closeButton")
         self.lineEdit = QtWidgets.QLineEdit(parent=self.background)

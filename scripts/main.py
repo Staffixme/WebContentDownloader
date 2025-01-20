@@ -8,6 +8,7 @@ from widgets import MainWindow, AboutWindow, SettingsWindow, ConfirmWindow, Quic
 from hotkeys import HotkeyThread
 from network_tools import get_video_info
 from video import Video
+import app_data
 
 if hasattr(Qt, 'AA_EnableHighDpiScaling'):
     QApplication.setAttribute(Qt.AA_EnableHighDpiScaling, True)
@@ -18,18 +19,22 @@ if hasattr(Qt, 'AA_UseHighDpiPixmaps'):
 
 class AppManager:
     def __init__(self):
-        super().__init__()
-        self.create_tray()
-
-        splash_screen = QSplashScreen(QPixmap("../icons/splash_screen2.png"))
+        splash_screen = QSplashScreen(QPixmap("../icons/Webcontent splash v2.0.0.png"))
         splash_screen.show()
         splash_screen.showMessage("Загрузка...", color=QColor("white"))
+
+        self.create_tray()
+
         self.quick_search = QuickSearch()
         self.quicksearch_hotkey = HotkeyThread("ctrl+q")
         self.quicksearch_hotkey.hotkey_triggered.connect(self.open_quick_search)
         self.quicksearch_hotkey.start()
         self.quick_search.create_loading_confirm_action.connect(self.open_confirm_window)
+
         self.thread_pool = QThreadPool.globalInstance()
+
+        splash_screen.showMessage("Инициализация...", color=QColor("white"))
+        app_data.init_data()
 
         self.main_window = MainWindow()
         self.main_window.show()
@@ -40,7 +45,7 @@ class AppManager:
 
     def create_tray(self):
         self.tray_icon = QSystemTrayIcon()
-        self.tray_icon.setIcon(QIcon("../icons/downloader_icon_clear.png"))
+        self.tray_icon.setIcon(QIcon("../icons/WebContent icon 2.png"))
         self.tray_icon.setVisible(True)
 
         self.tray_menu = QMenu()
@@ -49,12 +54,10 @@ class AppManager:
         self.tray_menu.setStyleSheet("""QMenu {
         background-color: rgb(255, 255, 255);
         border: 1px solid #C1C1C1;
-        border-radius: 5px;
         }
         QMenu::item {
             padding: 5px 20px;
             alignment: center;
-            border-radius: 5px;
         }
         QMenu::item:selected {
             background-color: #0E9594;
@@ -82,8 +85,11 @@ class AppManager:
         self.about_window.show()
 
     def open_settings_window(self):
-        self.settings_window = SettingsWindow()
-        self.settings_window.show()
+        try:
+            self.settings_window = SettingsWindow()
+            self.settings_window.show()
+        except Exception as e:
+            print(f"AppManager - cannot open settings window: {e}")
 
     def open_confirm_window(self, url: str):
         if self.main_window.isHidden():
@@ -100,6 +106,7 @@ class AppManager:
     def add_video_to_thread(self, video_info):
         try:
             video = Video(video_info)
+            video.downloader.signal.ffmpeg_error.connect(self.main_window.ffmpeg_error_dialog)
             self.main_window.add_video_to_table(video)
             self.thread_pool.start(video.downloader)
         except Exception as e:

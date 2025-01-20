@@ -27,20 +27,20 @@
   </property>
   <property name="windowIcon">
    <iconset resource="resources.qrc">
-    <normaloff>:/icons/icons/downloader_icon.png</normaloff>:/icons/icons/downloader_icon.png</iconset>
+    <normaloff>:/icons/icons/WebContent icon 2.png</normaloff>:/icons/icons/WebContent icon 2.png</iconset>
   </property>
   <property name="styleSheet">
    <string notr="true">#titleBar{
 background-color: qlineargradient(spread:pad, x1:0.5, y1:0, x2:0.5, y2:1, stop:0 rgba(243, 243, 243, 255), stop:1 rgba(239, 239, 239, 255));
-border-top-right-radius: 7px;
-border-top-left-radius: 7px;
+border-top-right-radius: 12px;
+border-top-left-radius: 12px;
 border-bottom: 1px solid #C1C1C1
 }
 
 #statusBar{
 background-color: qlineargradient(spread:pad, x1:0.5, y1:0, x2:0.5, y2:1, stop:0 rgba(243, 243, 243, 255), stop:1 rgba(239, 239, 239, 255));
-border-bottom-right-radius: 7px;
-border-bottom-left-radius: 7px;
+border-bottom-right-radius: 12px;
+border-bottom-left-radius: 12px;
 border-top: 1px solid #C1C1C1
 }</string>
   </property>
@@ -77,13 +77,23 @@ border-top: 1px solid #C1C1C1
     </property>
     <property name="styleSheet">
      <string notr="true">.QToolButton{
-background-color: rgba(255, 255, 255, 0);
+	background-color: rgba(0, 0, 0, 0);
+	border-radius: 12px;
+}
 
+.QToolButton:hover{
+	background-color: rgba(0, 0, 0, 25);
 }
 
 #download_button{
-background-color: rgb(14, 149, 148);
-border-radius: 4px;
+background-color: #264653;
+border-radius: 5px;
+transition: 1s linear;
+}
+
+#download_button:hover{
+	background-color: qlineargradient(spread:pad, x1:0, y1:0, x2:1, y2:1, stop:0 rgba(12, 170, 83, 			255), stop:1 rgba(90, 179, 223, 255));
+	border: 0px solid #C1C1C1
 }</string>
     </property>
     <property name="frameShape">
@@ -92,128 +102,16 @@ border-radius: 4px;
     <property name="frameShadow">
      <enum>QFrame::Raised</enum>
     </property>
-    <widget class="QLabel" name="label">
-     <property name="geometry">
-      <rect>
-       <x>20</x>
-       <y>20</y>
-       <width>261</width>
-       <height>71</height>
-      </rect>
-     </property>
-     <property name="text">
-      <string/>
-     </property>
-     <property name="pixmap">
-      <pixmap>icons/webcontentdownloader_logo_dark.png</pixmap>
-     </property>
-     <property name="scaledContents">
-      <bool>false</bool>
-     </property>
-    </widget>
-    <widget class="QWidget" name="horizontalLayoutWidget">
-     <property name="geometry">
-      <rect>
-       <x>970</x>
-       <y>10</y>
-       <width>101</width>
-       <height>31</height>
-      </rect>
-     </property>
-     <layout class="QHBoxLayout" name="horizontalLayout">
-      <property name="sizeConstraint">
-       <enum>QLayout::SetDefaultConstraint</enum>
-      </property>
-      <item>
-       <widget class="QToolButton" name="MoreButton">
-        <property name="sizePolicy">
-         <sizepolicy hsizetype="Minimum" vsizetype="Minimum">
-          <horstretch>0</horstretch>
-          <verstretch>0</verstretch>
-         </sizepolicy>
-        </property>
-        <property name="toolTip">
-         <string>Больше</string>
-        </property>
-        <property name="text">
-         <string>...</string>
-        </property>
-        <property name="icon">
-         <iconset resource="resources.qrc">
-          <normaloff>:/icons/icons/more.png</normaloff>:/icons/icons/more.png</iconset>
-        </property>
-        <property name="popupMode">
-         <enum>QToolButton::DelayedPopup</enum>
-        </property>
-        <property name="toolButtonStyle">
-         <enum>Qt::ToolButtonIconOnly</enum>
-        </property>
-       </widget>
-      </item>
-      <item>
-       <widget class="QToolButton" name="HideButton">
-        <property name="sizePolicy">
-         <sizepolicy hsizetype="Minimum" vsizetype="Minimum">
-          <horstretch>0</horstretch>
-          <verstretch>0</verstretch>
-         </sizepolicy>
-        </property>
-        <property name="toolTip">
-         <string>Свернуть</string>
-        </property>
-        <property name="text">
-         <string>...</string>
-        </property>
-        <property name="icon">
-         <iconset resource="resources.qrc">
-          <normaloff>:/icons/icons/hide.png</normaloff>:/icons/icons/hide.png</iconset>
-        </property>
-        <property name="popupMode">
-         <enum>QToolButton::DelayedPopup</enum>
-        </property>
-        <property name="toolButtonStyle">
-         <enum>Qt::ToolButtonIconOnly</enum>
-        </property>
-       </widget>
-      </item>
-      <item>
-       <widget class="QToolButton" name="CloseButton">
-        <property name="sizePolicy">
-         <sizepolicy hsizetype="Minimum" vsizetype="Minimum">
-          <horstretch>0</horstretch>
-          <verstretch>0</verstretch>
-         </sizepolicy>
-        </property>
-        <property name="toolTip">
-         <string>Закрыть</string>
-        </property>
-        <property name="text">
-         <string>...</string>
-        </property>
-        <property name="icon">
-         <iconset resource="resources.qrc">
-          <normaloff>:/icons/icons/close.png</normaloff>:/icons/icons/close.png</iconset>
-        </property>
-        <property name="popupMode">
-         <enum>QToolButton::DelayedPopup</enum>
-        </property>
-        <property name="toolButtonStyle">
-         <enum>Qt::ToolButtonIconOnly</enum>
-        </property>
-       </widget>
-      </item>
-     </layout>
-    </widget>
     <widget class="QWidget" name="horizontalLayoutWidget_5">
      <property name="geometry">
       <rect>
-       <x>340</x>
+       <x>10</x>
        <y>60</y>
-       <width>731</width>
+       <width>1061</width>
        <height>37</height>
       </rect>
      </property>
-     <layout class="QHBoxLayout" name="horizontalLayout_4" stretch="1,6,0,1">
+     <layout class="QHBoxLayout" name="horizontalLayout_4" stretch="5,20,1,3">
       <item>
        <layout class="QHBoxLayout" name="horizontalLayout_2">
         <property name="sizeConstraint">
@@ -221,8 +119,14 @@ border-radius: 4px;
         </property>
         <item>
          <widget class="QToolButton" name="backButton">
+          <property name="sizePolicy">
+           <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
+            <horstretch>0</horstretch>
+            <verstretch>0</verstretch>
+           </sizepolicy>
+          </property>
           <property name="toolTip">
-           <string>Назад</string>
+           <string/>
           </property>
           <property name="text">
            <string>...</string>
@@ -241,8 +145,14 @@ border-radius: 4px;
         </item>
         <item>
          <widget class="QToolButton" name="forwardButton">
+          <property name="sizePolicy">
+           <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
+            <horstretch>0</horstretch>
+            <verstretch>0</verstretch>
+           </sizepolicy>
+          </property>
           <property name="toolTip">
-           <string>Вперёд</string>
+           <string/>
           </property>
           <property name="text">
            <string>...</string>
@@ -261,8 +171,14 @@ border-radius: 4px;
         </item>
         <item>
          <widget class="QToolButton" name="refreshButton">
+          <property name="sizePolicy">
+           <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
+            <horstretch>0</horstretch>
+            <verstretch>0</verstretch>
+           </sizepolicy>
+          </property>
           <property name="toolTip">
-           <string>Перезагрузить страницу</string>
+           <string/>
           </property>
           <property name="text">
            <string>...</string>
@@ -281,8 +197,17 @@ border-radius: 4px;
         </item>
         <item>
          <widget class="QToolButton" name="browseButton">
+          <property name="sizePolicy">
+           <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
+            <horstretch>0</horstretch>
+            <verstretch>0</verstretch>
+           </sizepolicy>
+          </property>
           <property name="toolTip">
-           <string>Выбрать сайт</string>
+           <string/>
+          </property>
+          <property name="styleSheet">
+           <string notr="true"/>
           </property>
           <property name="text">
            <string>...</string>
@@ -296,6 +221,12 @@ border-radius: 4px;
             <width>24</width>
             <height>24</height>
            </size>
+          </property>
+          <property name="popupMode">
+           <enum>QToolButton::DelayedPopup</enum>
+          </property>
+          <property name="arrowType">
+           <enum>Qt::NoArrow</enum>
           </property>
          </widget>
         </item>
@@ -311,7 +242,8 @@ border-radius: 4px;
         </property>
         <property name="font">
          <font>
-          <family>Roboto Mono</family>
+          <family>Ubuntu</family>
+          <pointsize>9</pointsize>
          </font>
         </property>
         <property name="styleSheet">
@@ -328,8 +260,14 @@ border: 1px solid #C1C1C1</string>
       </item>
       <item>
        <widget class="QToolButton" name="search_button">
+        <property name="sizePolicy">
+         <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
+          <horstretch>0</horstretch>
+          <verstretch>0</verstretch>
+         </sizepolicy>
+        </property>
         <property name="toolTip">
-         <string>Поиск</string>
+         <string/>
         </property>
         <property name="text">
          <string>...</string>
@@ -354,14 +292,25 @@ border: 1px solid #C1C1C1</string>
           <verstretch>0</verstretch>
          </sizepolicy>
         </property>
+        <property name="font">
+         <font>
+          <family>Ubuntu Medium</family>
+          <pointsize>10</pointsize>
+          <weight>50</weight>
+          <bold>false</bold>
+         </font>
+        </property>
         <property name="toolTip">
-         <string>Скачать</string>
+         <string/>
         </property>
         <property name="styleSheet">
-         <string notr="true"/>
+         <string notr="true">.QToolButton{
+	color: white;
+	padding-right: 12px;
+}</string>
         </property>
         <property name="text">
-         <string>...</string>
+         <string>Скачать</string>
         </property>
         <property name="icon">
          <iconset resource="resources.qrc">
@@ -373,8 +322,164 @@ border: 1px solid #C1C1C1</string>
           <height>24</height>
          </size>
         </property>
+        <property name="toolButtonStyle">
+         <enum>Qt::ToolButtonTextBesideIcon</enum>
+        </property>
         <property name="autoRaise">
          <bool>false</bool>
+        </property>
+       </widget>
+      </item>
+     </layout>
+    </widget>
+    <widget class="QToolButton" name="CloseButton">
+     <property name="geometry">
+      <rect>
+       <x>1038</x>
+       <y>12</y>
+       <width>32</width>
+       <height>32</height>
+      </rect>
+     </property>
+     <property name="sizePolicy">
+      <sizepolicy hsizetype="Minimum" vsizetype="Minimum">
+       <horstretch>0</horstretch>
+       <verstretch>0</verstretch>
+      </sizepolicy>
+     </property>
+     <property name="toolTip">
+      <string>Закрыть</string>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">.QToolButton{
+	border-radius: 7px;
+	border: 1px solid #C1C1C1;
+}
+.QToolButton:hover{
+	background-color: rgb(255, 25, 28);
+}</string>
+     </property>
+     <property name="text">
+      <string>...</string>
+     </property>
+     <property name="icon">
+      <iconset resource="resources.qrc">
+       <normaloff>:/icons/icons/close.png</normaloff>
+       <activeon>:/icons/icons/close-white.png</activeon>
+       <selectedon>:/icons/icons/close-white.png</selectedon>:/icons/icons/close.png</iconset>
+     </property>
+     <property name="popupMode">
+      <enum>QToolButton::DelayedPopup</enum>
+     </property>
+     <property name="toolButtonStyle">
+      <enum>Qt::ToolButtonIconOnly</enum>
+     </property>
+    </widget>
+    <widget class="QToolButton" name="HideButton">
+     <property name="geometry">
+      <rect>
+       <x>1000</x>
+       <y>12</y>
+       <width>32</width>
+       <height>32</height>
+      </rect>
+     </property>
+     <property name="sizePolicy">
+      <sizepolicy hsizetype="Minimum" vsizetype="Minimum">
+       <horstretch>0</horstretch>
+       <verstretch>0</verstretch>
+      </sizepolicy>
+     </property>
+     <property name="toolTip">
+      <string>Свернуть</string>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">.QToolButton{
+	border-radius: 7px;
+	border: 1px solid #C1C1C1;
+}
+.QToolButton:hover{
+	background-color: rgba(0, 0, 0, 24);
+}</string>
+     </property>
+     <property name="text">
+      <string>...</string>
+     </property>
+     <property name="icon">
+      <iconset resource="resources.qrc">
+       <normaloff>:/icons/icons/hide.png</normaloff>:/icons/icons/hide.png</iconset>
+     </property>
+     <property name="popupMode">
+      <enum>QToolButton::DelayedPopup</enum>
+     </property>
+     <property name="toolButtonStyle">
+      <enum>Qt::ToolButtonIconOnly</enum>
+     </property>
+    </widget>
+    <widget class="QWidget" name="layoutWidget">
+     <property name="geometry">
+      <rect>
+       <x>12</x>
+       <y>12</y>
+       <width>131</width>
+       <height>34</height>
+      </rect>
+     </property>
+     <layout class="QHBoxLayout" name="horizontalLayout_5">
+      <property name="spacing">
+       <number>10</number>
+      </property>
+      <item>
+       <widget class="QLabel" name="app_button">
+        <property name="sizePolicy">
+         <sizepolicy hsizetype="Fixed" vsizetype="Preferred">
+          <horstretch>0</horstretch>
+          <verstretch>0</verstretch>
+         </sizepolicy>
+        </property>
+        <property name="text">
+         <string/>
+        </property>
+        <property name="pixmap">
+         <pixmap resource="resources.qrc">:/icons/icons/WebContent icon 2.png</pixmap>
+        </property>
+        <property name="scaledContents">
+         <bool>false</bool>
+        </property>
+       </widget>
+      </item>
+      <item>
+       <widget class="QPushButton" name="menu_button">
+        <property name="sizePolicy">
+         <sizepolicy hsizetype="Minimum" vsizetype="Expanding">
+          <horstretch>0</horstretch>
+          <verstretch>0</verstretch>
+         </sizepolicy>
+        </property>
+        <property name="font">
+         <font>
+          <family>Ubuntu Medium</family>
+          <pointsize>10</pointsize>
+         </font>
+        </property>
+        <property name="styleSheet">
+         <string notr="true">.QPushButton{
+	background-color: rgba(0, 0, 0, 0);
+	border-radius: 7px;
+	padding-left: 12px;
+	padding-right: 12px;
+	border: 1px solid #C1C1C1;
+}
+.QPushButton:hover{
+	background-color: rgba(0, 0, 0, 24);
+}</string>
+        </property>
+        <property name="text">
+         <string>Меню</string>
+        </property>
+        <property name="icon">
+         <iconset resource="resources.qrc">
+          <normaloff>:/icons/icons/menu.png</normaloff>:/icons/icons/menu.png</iconset>
         </property>
        </widget>
       </item>
@@ -395,22 +500,80 @@ border: 1px solid #C1C1C1</string>
       <number>0</number>
      </property>
      <item>
-      <layout class="QHBoxLayout" name="webBrowserHandler">
-       <property name="sizeConstraint">
-        <enum>QLayout::SetDefaultConstraint</enum>
+      <widget class="QTabWidget" name="webBrowserHandler">
+       <property name="font">
+        <font>
+         <family>Ubuntu Medium</family>
+        </font>
        </property>
-      </layout>
+       <property name="autoFillBackground">
+        <bool>true</bool>
+       </property>
+       <property name="styleSheet">
+        <string notr="true">.QTabBar:tab{
+	background-color: qlineargradient(spread:pad, x1:0.5, y1:0, x2:0.5, y2:1, stop:0 rgba(243, 243, 243, 255), stop:1 rgba(239, 239, 239, 255));
+	height: 29px;
+	border-radius: 4px;
+	border: 1px solid #C1C1C1;
+	margin-top: 5px;
+	margin-bottom: 5px;
+	margin-left: 12px;
+	padding-left: 12px;
+	padding-right: 12px;
+	max-width: 128px;
+}
+.QTabBar:close-button{
+	image: url(:/icons/icons/close.png);
+}
+.QTabBar:tab:selected{
+	background-color: rgb(255, 255, 255);
+}
+.QTabBar:tab:hover{
+	background-color:  rgba(0, 0, 0, 25);
+}</string>
+       </property>
+       <property name="tabPosition">
+        <enum>QTabWidget::North</enum>
+       </property>
+       <property name="currentIndex">
+        <number>-1</number>
+       </property>
+       <property name="documentMode">
+        <bool>true</bool>
+       </property>
+       <property name="tabsClosable">
+        <bool>true</bool>
+       </property>
+       <property name="movable">
+        <bool>true</bool>
+       </property>
+      </widget>
      </item>
      <item>
       <widget class="QTableWidget" name="videosList">
+       <property name="font">
+        <font>
+         <family>Ubuntu Medium</family>
+        </font>
+       </property>
        <property name="styleSheet">
         <string notr="true">QFrame{
-background-color: white;
-color: black;
-}</string>
+	background-color: white;
+	color: black;
+}
+QTableWidget:header{
+	background-color: red;
+}
+</string>
        </property>
        <property name="frameShape">
-        <enum>QFrame::StyledPanel</enum>
+        <enum>QFrame::NoFrame</enum>
+       </property>
+       <property name="frameShadow">
+        <enum>QFrame::Plain</enum>
+       </property>
+       <property name="lineWidth">
+        <number>0</number>
        </property>
        <property name="verticalScrollBarPolicy">
         <enum>Qt::ScrollBarAlwaysOn</enum>
@@ -418,17 +581,41 @@ color: black;
        <property name="horizontalScrollBarPolicy">
         <enum>Qt::ScrollBarAlwaysOff</enum>
        </property>
+       <property name="sizeAdjustPolicy">
+        <enum>QAbstractScrollArea::AdjustIgnored</enum>
+       </property>
        <property name="editTriggers">
         <set>QAbstractItemView::NoEditTriggers</set>
+       </property>
+       <property name="alternatingRowColors">
+        <bool>false</bool>
+       </property>
+       <property name="showGrid">
+        <bool>true</bool>
        </property>
        <property name="gridStyle">
         <enum>Qt::SolidLine</enum>
        </property>
+       <property name="sortingEnabled">
+        <bool>false</bool>
+       </property>
+       <property name="wordWrap">
+        <bool>true</bool>
+       </property>
+       <property name="cornerButtonEnabled">
+        <bool>true</bool>
+       </property>
        <property name="columnCount">
         <number>4</number>
        </property>
+       <attribute name="horizontalHeaderVisible">
+        <bool>true</bool>
+       </attribute>
        <attribute name="horizontalHeaderDefaultSectionSize">
         <number>68</number>
+       </attribute>
+       <attribute name="horizontalHeaderHighlightSections">
+        <bool>true</bool>
        </attribute>
        <attribute name="horizontalHeaderMinimumSectionSize">
         <number>24</number>
@@ -438,6 +625,15 @@ color: black;
        </attribute>
        <attribute name="horizontalHeaderStretchLastSection">
         <bool>true</bool>
+       </attribute>
+       <attribute name="verticalHeaderVisible">
+        <bool>false</bool>
+       </attribute>
+       <attribute name="verticalHeaderHighlightSections">
+        <bool>true</bool>
+       </attribute>
+       <attribute name="verticalHeaderStretchLastSection">
+        <bool>false</bool>
        </attribute>
        <column>
         <property name="text">
@@ -449,7 +645,7 @@ color: black;
          </font>
         </property>
         <property name="textAlignment">
-         <set>AlignLeading|AlignVCenter</set>
+         <set>AlignCenter</set>
         </property>
         <property name="icon">
          <iconset resource="resources.qrc">
@@ -458,22 +654,30 @@ color: black;
        </column>
        <column>
         <property name="text">
-         <string>Название</string>
+         <string/>
         </property>
         <property name="font">
          <font>
           <family>Roboto Mono</family>
          </font>
+        </property>
+        <property name="icon">
+         <iconset resource="resources.qrc">
+          <normaloff>:/icons/icons/name.png</normaloff>:/icons/icons/name.png</iconset>
         </property>
        </column>
        <column>
         <property name="text">
-         <string>Статус</string>
+         <string/>
         </property>
         <property name="font">
          <font>
           <family>Roboto Mono</family>
          </font>
+        </property>
+        <property name="icon">
+         <iconset resource="resources.qrc">
+          <normaloff>:/icons/icons/status.png</normaloff>:/icons/icons/status.png</iconset>
         </property>
        </column>
        <column>
@@ -509,49 +713,26 @@ color: black;
     <property name="frameShadow">
      <enum>QFrame::Raised</enum>
     </property>
-    <widget class="QLabel" name="pageName">
+    <widget class="QLabel" name="version_text">
      <property name="geometry">
       <rect>
-       <x>10</x>
+       <x>940</x>
        <y>0</y>
-       <width>521</width>
+       <width>131</width>
        <height>31</height>
       </rect>
      </property>
      <property name="font">
       <font>
-       <family>Roboto Mono</family>
+       <family>Ubuntu</family>
        <pointsize>11</pointsize>
       </font>
      </property>
      <property name="text">
-      <string>Название страницы</string>
+      <string>v. ?</string>
      </property>
-    </widget>
-    <widget class="QProgressBar" name="progressBar">
-     <property name="geometry">
-      <rect>
-       <x>629</x>
-       <y>14</y>
-       <width>441</width>
-       <height>4</height>
-      </rect>
-     </property>
-     <property name="styleSheet">
-      <string notr="true">#progressBar{
-	background-color: #D2D2D2;
-	border-radius: 5px;
-}
-
-#progressBar:chunk{
-	background-color: #0E9594;
-}</string>
-     </property>
-     <property name="value">
-      <number>0</number>
-     </property>
-     <property name="textVisible">
-      <bool>false</bool>
+     <property name="alignment">
+      <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
      </property>
     </widget>
    </widget>

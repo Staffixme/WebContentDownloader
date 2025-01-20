@@ -13,10 +13,13 @@ class Ui_Form(object):
     def setupUi(self, Form):
         Form.setObjectName("Form")
         Form.resize(651, 461)
+        icon = QtGui.QIcon()
+        icon.addPixmap(QtGui.QPixmap("../icons/WebContent icon 2.png"), QtGui.QIcon.Mode.Normal, QtGui.QIcon.State.Off)
+        Form.setWindowIcon(icon)
         Form.setStyleSheet("#titleBar{\n"
 "background-color: qlineargradient(spread:pad, x1:0.5, y1:0, x2:0.5, y2:1, stop:0 rgba(243, 243, 243, 255), stop:1 rgba(239, 239, 239, 255));\n"
-"border-top-right-radius: 7px;\n"
-"border-top-left-radius: 7px;\n"
+"border-top-right-radius: 12px;\n"
+"border-top-left-radius: 12px;\n"
 "border-left: 1px solid #C1C1C1;\n"
 "border-right: 1px solid #C1C1C1;\n"
 "border-top: 1px solid #C1C1C1\n"
@@ -24,8 +27,8 @@ class Ui_Form(object):
 "\n"
 "#bottomBar{\n"
 "background-color: qlineargradient(spread:pad, x1:0.5, y1:0, x2:0.5, y2:1, stop:0 rgba(243, 243, 243, 255), stop:1 rgba(239, 239, 239, 255));\n"
-"border-bottom-right-radius: 7px;\n"
-"border-bottom-left-radius: 7px;\n"
+"border-bottom-right-radius: 12px;\n"
+"border-bottom-left-radius: 12px;\n"
 "border-left: 1px solid #C1C1C1;\n"
 "border-right: 1px solid #C1C1C1;\n"
 "border-bottom: 1px solid #C1C1C1\n"
@@ -40,81 +43,37 @@ class Ui_Form(object):
 "#preview{\n"
 "border-radius: 5px\n"
 "}")
-        self.titleBar = QtWidgets.QFrame(parent=Form)
-        self.titleBar.setGeometry(QtCore.QRect(0, 0, 651, 31))
-        self.titleBar.setStyleSheet(".QToolButton{\n"
-"background-color: rgba(255, 255, 255, 0);\n"
-"}")
-        self.titleBar.setFrameShape(QtWidgets.QFrame.Shape.StyledPanel)
-        self.titleBar.setFrameShadow(QtWidgets.QFrame.Shadow.Raised)
-        self.titleBar.setObjectName("titleBar")
-        self.horizontalLayoutWidget_3 = QtWidgets.QWidget(parent=self.titleBar)
-        self.horizontalLayoutWidget_3.setGeometry(QtCore.QRect(580, 0, 71, 31))
-        self.horizontalLayoutWidget_3.setObjectName("horizontalLayoutWidget_3")
-        self.horizontalLayout_6 = QtWidgets.QHBoxLayout(self.horizontalLayoutWidget_3)
-        self.horizontalLayout_6.setSizeConstraint(QtWidgets.QLayout.SizeConstraint.SetDefaultConstraint)
-        self.horizontalLayout_6.setContentsMargins(0, 0, 0, 0)
-        self.horizontalLayout_6.setObjectName("horizontalLayout_6")
-        self.HideButton = QtWidgets.QToolButton(parent=self.horizontalLayoutWidget_3)
-        sizePolicy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.Policy.Minimum, QtWidgets.QSizePolicy.Policy.Minimum)
-        sizePolicy.setHorizontalStretch(0)
-        sizePolicy.setVerticalStretch(0)
-        sizePolicy.setHeightForWidth(self.HideButton.sizePolicy().hasHeightForWidth())
-        self.HideButton.setSizePolicy(sizePolicy)
-        icon = QtGui.QIcon()
-        icon.addPixmap(QtGui.QPixmap("../icons/hide.png"), QtGui.QIcon.Mode.Normal, QtGui.QIcon.State.Off)
-        self.HideButton.setIcon(icon)
-        self.HideButton.setPopupMode(QtWidgets.QToolButton.ToolButtonPopupMode.DelayedPopup)
-        self.HideButton.setToolButtonStyle(QtCore.Qt.ToolButtonStyle.ToolButtonIconOnly)
-        self.HideButton.setObjectName("HideButton")
-        self.horizontalLayout_6.addWidget(self.HideButton)
-        self.CloseButton = QtWidgets.QToolButton(parent=self.horizontalLayoutWidget_3)
-        sizePolicy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.Policy.Minimum, QtWidgets.QSizePolicy.Policy.Minimum)
-        sizePolicy.setHorizontalStretch(0)
-        sizePolicy.setVerticalStretch(0)
-        sizePolicy.setHeightForWidth(self.CloseButton.sizePolicy().hasHeightForWidth())
-        self.CloseButton.setSizePolicy(sizePolicy)
-        icon1 = QtGui.QIcon()
-        icon1.addPixmap(QtGui.QPixmap("../icons/close.png"), QtGui.QIcon.Mode.Normal, QtGui.QIcon.State.Off)
-        self.CloseButton.setIcon(icon1)
-        self.CloseButton.setPopupMode(QtWidgets.QToolButton.ToolButtonPopupMode.DelayedPopup)
-        self.CloseButton.setToolButtonStyle(QtCore.Qt.ToolButtonStyle.ToolButtonIconOnly)
-        self.CloseButton.setObjectName("CloseButton")
-        self.horizontalLayout_6.addWidget(self.CloseButton)
-        self.formTitle = QtWidgets.QLabel(parent=self.titleBar)
-        self.formTitle.setGeometry(QtCore.QRect(10, 3, 211, 21))
-        font = QtGui.QFont()
-        font.setFamily("Roboto Mono Medium")
-        font.setPointSize(11)
-        self.formTitle.setFont(font)
-        self.formTitle.setStyleSheet("color: #264653")
-        self.formTitle.setObjectName("formTitle")
         self.bottomBar = QtWidgets.QFrame(parent=Form)
-        self.bottomBar.setGeometry(QtCore.QRect(0, 410, 651, 51))
+        self.bottomBar.setGeometry(QtCore.QRect(0, 395, 651, 66))
         self.bottomBar.setFrameShape(QtWidgets.QFrame.Shape.StyledPanel)
         self.bottomBar.setFrameShadow(QtWidgets.QFrame.Shadow.Raised)
         self.bottomBar.setObjectName("bottomBar")
         self.downloadButton = QtWidgets.QPushButton(parent=self.bottomBar)
-        self.downloadButton.setGeometry(QtCore.QRect(520, 10, 121, 31))
+        self.downloadButton.setGeometry(QtCore.QRect(493, 11, 146, 43))
         font = QtGui.QFont()
-        font.setFamily("Roboto Mono Medium")
-        font.setPointSize(9)
+        font.setFamily("Ubuntu Medium")
+        font.setPointSize(11)
         font.setBold(False)
         font.setWeight(50)
         self.downloadButton.setFont(font)
-        self.downloadButton.setStyleSheet("background-color: rgb(14, 149, 148);\n"
-"border-radius: 5;\n"
-"color: white;")
+        self.downloadButton.setStyleSheet("QPushButton{\n"
+"    background-color: #264653;\n"
+"    border-radius: 7;\n"
+"    color: white;\n"
+"}\n"
+"QPushButton:hover{\n"
+"    background-color: #1A333D;\n"
+"}")
         self.downloadButton.setObjectName("downloadButton")
         self.savePath = QtWidgets.QLabel(parent=self.bottomBar)
-        self.savePath.setGeometry(QtCore.QRect(20, 15, 401, 21))
+        self.savePath.setGeometry(QtCore.QRect(20, 11, 401, 43))
         font = QtGui.QFont()
-        font.setFamily("Roboto Mono")
-        font.setPointSize(9)
+        font.setFamily("Ubuntu")
+        font.setPointSize(10)
         self.savePath.setFont(font)
         self.savePath.setObjectName("savePath")
         self.background = QtWidgets.QFrame(parent=Form)
-        self.background.setGeometry(QtCore.QRect(0, 30, 651, 381))
+        self.background.setGeometry(QtCore.QRect(0, 55, 651, 341))
         self.background.setFrameShape(QtWidgets.QFrame.Shape.StyledPanel)
         self.background.setFrameShadow(QtWidgets.QFrame.Shadow.Raised)
         self.background.setObjectName("background")
@@ -127,7 +86,7 @@ class Ui_Form(object):
         self.fileName = QtWidgets.QLineEdit(parent=self.background)
         self.fileName.setGeometry(QtCore.QRect(35, 200, 269, 31))
         font = QtGui.QFont()
-        font.setFamily("Roboto Mono Medium")
+        font.setFamily("Ubuntu Medium")
         font.setPointSize(11)
         font.setBold(False)
         font.setWeight(50)
@@ -138,16 +97,16 @@ class Ui_Form(object):
         self.formatText = QtWidgets.QLabel(parent=self.background)
         self.formatText.setGeometry(QtCore.QRect(35, 240, 271, 20))
         font = QtGui.QFont()
-        font.setFamily("Roboto Mono")
-        font.setPointSize(9)
+        font.setFamily("Ubuntu")
+        font.setPointSize(10)
         self.formatText.setFont(font)
         self.formatText.setStyleSheet("color: #5D6669")
         self.formatText.setObjectName("formatText")
         self.durationText = QtWidgets.QLabel(parent=self.background)
         self.durationText.setGeometry(QtCore.QRect(35, 265, 271, 20))
         font = QtGui.QFont()
-        font.setFamily("Roboto Mono")
-        font.setPointSize(9)
+        font.setFamily("Ubuntu")
+        font.setPointSize(10)
         self.durationText.setFont(font)
         self.durationText.setStyleSheet("color: #5D6669")
         self.durationText.setObjectName("durationText")
@@ -198,12 +157,16 @@ class Ui_Form(object):
         self.label_3 = QtWidgets.QLabel(parent=self.frame_2)
         self.label_3.setGeometry(QtCore.QRect(0, 0, 249, 16))
         font = QtGui.QFont()
-        font.setFamily("Roboto Mono")
-        font.setPointSize(9)
+        font.setFamily("Ubuntu Mono")
+        font.setPointSize(11)
         self.label_3.setFont(font)
         self.label_3.setObjectName("label_3")
         self.formatBox = QtWidgets.QComboBox(parent=self.frame_2)
         self.formatBox.setGeometry(QtCore.QRect(0, 20, 249, 31))
+        font = QtGui.QFont()
+        font.setFamily("Ubuntu")
+        font.setPointSize(9)
+        self.formatBox.setFont(font)
         self.formatBox.setObjectName("formatBox")
         self.verticalLayout.addWidget(self.frame_2)
         self.frame = QtWidgets.QFrame(parent=self.verticalLayoutWidget)
@@ -247,12 +210,16 @@ class Ui_Form(object):
         self.label_2 = QtWidgets.QLabel(parent=self.frame)
         self.label_2.setGeometry(QtCore.QRect(0, 0, 249, 16))
         font = QtGui.QFont()
-        font.setFamily("Roboto Mono")
-        font.setPointSize(9)
+        font.setFamily("Ubuntu Mono")
+        font.setPointSize(11)
         self.label_2.setFont(font)
         self.label_2.setObjectName("label_2")
         self.extensionBox = QtWidgets.QComboBox(parent=self.frame)
         self.extensionBox.setGeometry(QtCore.QRect(0, 20, 249, 31))
+        font = QtGui.QFont()
+        font.setFamily("Ubuntu")
+        font.setPointSize(9)
+        self.extensionBox.setFont(font)
         self.extensionBox.setObjectName("extensionBox")
         self.verticalLayout.addWidget(self.frame)
         self.frame_3 = QtWidgets.QFrame(parent=self.verticalLayoutWidget)
@@ -280,8 +247,8 @@ class Ui_Form(object):
         self.label_5 = QtWidgets.QLabel(parent=self.frame_3)
         self.label_5.setGeometry(QtCore.QRect(38, 0, 211, 21))
         font = QtGui.QFont()
-        font.setFamily("Roboto Mono Medium")
-        font.setPointSize(9)
+        font.setFamily("Ubuntu Medium")
+        font.setPointSize(11)
         font.setBold(False)
         font.setWeight(50)
         self.label_5.setFont(font)
@@ -299,8 +266,8 @@ class Ui_Form(object):
         self.label_6 = QtWidgets.QLabel(parent=self.frame_3)
         self.label_6.setGeometry(QtCore.QRect(40, 10, 211, 51))
         font = QtGui.QFont()
-        font.setFamily("Roboto Mono")
-        font.setPointSize(8)
+        font.setFamily("Ubuntu")
+        font.setPointSize(9)
         font.setBold(False)
         font.setWeight(50)
         self.label_6.setFont(font)
@@ -308,6 +275,65 @@ class Ui_Form(object):
         self.label_6.setWordWrap(True)
         self.label_6.setObjectName("label_6")
         self.verticalLayout.addWidget(self.frame_3)
+        self.titleBar = QtWidgets.QFrame(parent=Form)
+        self.titleBar.setGeometry(QtCore.QRect(0, 0, 651, 55))
+        self.titleBar.setStyleSheet(".QToolButton{\n"
+"background-color: rgba(255, 255, 255, 0);\n"
+"}")
+        self.titleBar.setFrameShape(QtWidgets.QFrame.Shape.StyledPanel)
+        self.titleBar.setFrameShadow(QtWidgets.QFrame.Shadow.Raised)
+        self.titleBar.setObjectName("titleBar")
+        self.formTitle = QtWidgets.QLabel(parent=self.titleBar)
+        self.formTitle.setGeometry(QtCore.QRect(200, 18, 251, 21))
+        font = QtGui.QFont()
+        font.setFamily("Ubuntu Medium")
+        font.setPointSize(13)
+        self.formTitle.setFont(font)
+        self.formTitle.setStyleSheet("color: #264653")
+        self.formTitle.setAlignment(QtCore.Qt.AlignmentFlag.AlignCenter)
+        self.formTitle.setObjectName("formTitle")
+        self.CloseButton = QtWidgets.QToolButton(parent=self.titleBar)
+        self.CloseButton.setGeometry(QtCore.QRect(608, 12, 32, 32))
+        sizePolicy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.Policy.Minimum, QtWidgets.QSizePolicy.Policy.Minimum)
+        sizePolicy.setHorizontalStretch(0)
+        sizePolicy.setVerticalStretch(0)
+        sizePolicy.setHeightForWidth(self.CloseButton.sizePolicy().hasHeightForWidth())
+        self.CloseButton.setSizePolicy(sizePolicy)
+        self.CloseButton.setStyleSheet(".QToolButton{\n"
+"    border-radius: 7px;\n"
+"    border: 1px solid #C1C1C1;\n"
+"}\n"
+".QToolButton:hover{\n"
+"    background-color: rgb(255, 25, 28);\n"
+"}")
+        icon1 = QtGui.QIcon()
+        icon1.addPixmap(QtGui.QPixmap("../icons/close.png"), QtGui.QIcon.Mode.Normal, QtGui.QIcon.State.Off)
+        icon1.addPixmap(QtGui.QPixmap("../icons/close-white.png"), QtGui.QIcon.Mode.Active, QtGui.QIcon.State.On)
+        icon1.addPixmap(QtGui.QPixmap("../icons/close-white.png"), QtGui.QIcon.Mode.Selected, QtGui.QIcon.State.On)
+        self.CloseButton.setIcon(icon1)
+        self.CloseButton.setPopupMode(QtWidgets.QToolButton.ToolButtonPopupMode.DelayedPopup)
+        self.CloseButton.setToolButtonStyle(QtCore.Qt.ToolButtonStyle.ToolButtonIconOnly)
+        self.CloseButton.setObjectName("CloseButton")
+        self.HideButton = QtWidgets.QToolButton(parent=self.titleBar)
+        self.HideButton.setGeometry(QtCore.QRect(570, 12, 32, 32))
+        sizePolicy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.Policy.Minimum, QtWidgets.QSizePolicy.Policy.Minimum)
+        sizePolicy.setHorizontalStretch(0)
+        sizePolicy.setVerticalStretch(0)
+        sizePolicy.setHeightForWidth(self.HideButton.sizePolicy().hasHeightForWidth())
+        self.HideButton.setSizePolicy(sizePolicy)
+        self.HideButton.setStyleSheet(".QToolButton{\n"
+"    border-radius: 7px;\n"
+"    border: 1px solid #C1C1C1;\n"
+"}\n"
+".QToolButton:hover{\n"
+"    background-color: rgba(0, 0, 0, 24);\n"
+"}")
+        icon2 = QtGui.QIcon()
+        icon2.addPixmap(QtGui.QPixmap("../icons/hide.png"), QtGui.QIcon.Mode.Normal, QtGui.QIcon.State.Off)
+        self.HideButton.setIcon(icon2)
+        self.HideButton.setPopupMode(QtWidgets.QToolButton.ToolButtonPopupMode.DelayedPopup)
+        self.HideButton.setToolButtonStyle(QtCore.Qt.ToolButtonStyle.ToolButtonIconOnly)
+        self.HideButton.setObjectName("HideButton")
 
         self.retranslateUi(Form)
         QtCore.QMetaObject.connectSlotsByName(Form)
@@ -315,11 +341,6 @@ class Ui_Form(object):
     def retranslateUi(self, Form):
         _translate = QtCore.QCoreApplication.translate
         Form.setWindowTitle(_translate("Form", "Подтверждение загрузки"))
-        self.HideButton.setToolTip(_translate("Form", "Свернуть"))
-        self.HideButton.setText(_translate("Form", "..."))
-        self.CloseButton.setToolTip(_translate("Form", "Закрыть"))
-        self.CloseButton.setText(_translate("Form", "..."))
-        self.formTitle.setText(_translate("Form", "Подтверждение загрузки"))
         self.downloadButton.setText(_translate("Form", "Скачать"))
         self.savePath.setText(_translate("Form", "Файл будет сохранен в:"))
         self.fileName.setText(_translate("Form", "Название файла"))
@@ -330,3 +351,8 @@ class Ui_Form(object):
         self.label_2.setText(_translate("Form", "Расширение"))
         self.label_5.setText(_translate("Form", "Удалить рекламные вставки"))
         self.label_6.setText(_translate("Form", "Удаление рекламных фрагментов из видео на базе SponsorBlock."))
+        self.formTitle.setText(_translate("Form", "Подтверждение загрузки"))
+        self.CloseButton.setToolTip(_translate("Form", "Закрыть"))
+        self.CloseButton.setText(_translate("Form", "..."))
+        self.HideButton.setToolTip(_translate("Form", "Свернуть"))
+        self.HideButton.setText(_translate("Form", "..."))

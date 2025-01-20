@@ -1,3 +1,5 @@
+import pprint
+
 import requests
 from PyQt6.QtGui import QPixmap
 from PyQt6.QtCore import QByteArray
@@ -11,10 +13,11 @@ def get_video_info(url: str) -> tuple:
 
     video_format = dict()
 
-    if 'acodec' in video_info and video_info['acodec'] != 'none':
-        video_format["is_video"] = False
-    else:
+    if ('vcodec' in video_info and video_info['vcodec'] != 'none') or (
+            'resolution' in video_info and video_info['resolution'] != 'none'):
         video_format["is_video"] = True
+    else:
+        video_format["is_video"] = False
 
     extensions = {fmt['ext'] for fmt in video_info.get('formats', [])}
     video_format["extensions"] = extensions
@@ -41,6 +44,6 @@ def load_image_from_url(url) -> QPixmap:
             return pixmap
         else:
             print("Ошибка загрузки изображения:", response.status_code)
-            return QPixmap("../icons/unknown_preview.png")
+            return QPixmap("/icons/unknown_preview.png")
     else:
-        return QPixmap("../icons/unknown_preview.png")
+        return QPixmap("/icons/unknown_preview.png")

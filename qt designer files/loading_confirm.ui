@@ -13,11 +13,15 @@
   <property name="windowTitle">
    <string>Подтверждение загрузки</string>
   </property>
+  <property name="windowIcon">
+   <iconset resource="resources.qrc">
+    <normaloff>:/icons/icons/WebContent icon 2.png</normaloff>:/icons/icons/WebContent icon 2.png</iconset>
+  </property>
   <property name="styleSheet">
    <string notr="true">#titleBar{
 background-color: qlineargradient(spread:pad, x1:0.5, y1:0, x2:0.5, y2:1, stop:0 rgba(243, 243, 243, 255), stop:1 rgba(239, 239, 239, 255));
-border-top-right-radius: 7px;
-border-top-left-radius: 7px;
+border-top-right-radius: 12px;
+border-top-left-radius: 12px;
 border-left: 1px solid #C1C1C1;
 border-right: 1px solid #C1C1C1;
 border-top: 1px solid #C1C1C1
@@ -25,8 +29,8 @@ border-top: 1px solid #C1C1C1
 
 #bottomBar{
 background-color: qlineargradient(spread:pad, x1:0.5, y1:0, x2:0.5, y2:1, stop:0 rgba(243, 243, 243, 255), stop:1 rgba(239, 239, 239, 255));
-border-bottom-right-radius: 7px;
-border-bottom-left-radius: 7px;
+border-bottom-right-radius: 12px;
+border-bottom-left-radius: 12px;
 border-left: 1px solid #C1C1C1;
 border-right: 1px solid #C1C1C1;
 border-bottom: 1px solid #C1C1C1
@@ -42,123 +46,13 @@ border-right: 1px solid #C1C1C1;
 border-radius: 5px
 }</string>
   </property>
-  <widget class="QFrame" name="titleBar">
-   <property name="geometry">
-    <rect>
-     <x>0</x>
-     <y>0</y>
-     <width>651</width>
-     <height>31</height>
-    </rect>
-   </property>
-   <property name="styleSheet">
-    <string notr="true">.QToolButton{
-background-color: rgba(255, 255, 255, 0);
-}</string>
-   </property>
-   <property name="frameShape">
-    <enum>QFrame::StyledPanel</enum>
-   </property>
-   <property name="frameShadow">
-    <enum>QFrame::Raised</enum>
-   </property>
-   <widget class="QWidget" name="horizontalLayoutWidget_3">
-    <property name="geometry">
-     <rect>
-      <x>580</x>
-      <y>0</y>
-      <width>71</width>
-      <height>31</height>
-     </rect>
-    </property>
-    <layout class="QHBoxLayout" name="horizontalLayout_6">
-     <property name="sizeConstraint">
-      <enum>QLayout::SetDefaultConstraint</enum>
-     </property>
-     <item>
-      <widget class="QToolButton" name="HideButton">
-       <property name="sizePolicy">
-        <sizepolicy hsizetype="Minimum" vsizetype="Minimum">
-         <horstretch>0</horstretch>
-         <verstretch>0</verstretch>
-        </sizepolicy>
-       </property>
-       <property name="toolTip">
-        <string>Свернуть</string>
-       </property>
-       <property name="text">
-        <string>...</string>
-       </property>
-       <property name="icon">
-        <iconset>
-         <normaloff>:/icons/icons/hide.png</normaloff>:/icons/icons/hide.png</iconset>
-       </property>
-       <property name="popupMode">
-        <enum>QToolButton::DelayedPopup</enum>
-       </property>
-       <property name="toolButtonStyle">
-        <enum>Qt::ToolButtonIconOnly</enum>
-       </property>
-      </widget>
-     </item>
-     <item>
-      <widget class="QToolButton" name="CloseButton">
-       <property name="sizePolicy">
-        <sizepolicy hsizetype="Minimum" vsizetype="Minimum">
-         <horstretch>0</horstretch>
-         <verstretch>0</verstretch>
-        </sizepolicy>
-       </property>
-       <property name="toolTip">
-        <string>Закрыть</string>
-       </property>
-       <property name="text">
-        <string>...</string>
-       </property>
-       <property name="icon">
-        <iconset>
-         <normaloff>:/icons/icons/close.png</normaloff>:/icons/icons/close.png</iconset>
-       </property>
-       <property name="popupMode">
-        <enum>QToolButton::DelayedPopup</enum>
-       </property>
-       <property name="toolButtonStyle">
-        <enum>Qt::ToolButtonIconOnly</enum>
-       </property>
-      </widget>
-     </item>
-    </layout>
-   </widget>
-   <widget class="QLabel" name="formTitle">
-    <property name="geometry">
-     <rect>
-      <x>10</x>
-      <y>3</y>
-      <width>211</width>
-      <height>21</height>
-     </rect>
-    </property>
-    <property name="font">
-     <font>
-      <family>Roboto Mono Medium</family>
-      <pointsize>11</pointsize>
-     </font>
-    </property>
-    <property name="styleSheet">
-     <string notr="true">color: #264653</string>
-    </property>
-    <property name="text">
-     <string>Подтверждение загрузки</string>
-    </property>
-   </widget>
-  </widget>
   <widget class="QFrame" name="bottomBar">
    <property name="geometry">
     <rect>
      <x>0</x>
-     <y>410</y>
+     <y>395</y>
      <width>651</width>
-     <height>51</height>
+     <height>66</height>
     </rect>
    </property>
    <property name="frameShape">
@@ -170,24 +64,29 @@ background-color: rgba(255, 255, 255, 0);
    <widget class="QPushButton" name="downloadButton">
     <property name="geometry">
      <rect>
-      <x>520</x>
-      <y>10</y>
-      <width>121</width>
-      <height>31</height>
+      <x>493</x>
+      <y>11</y>
+      <width>146</width>
+      <height>43</height>
      </rect>
     </property>
     <property name="font">
      <font>
-      <family>Roboto Mono Medium</family>
-      <pointsize>9</pointsize>
+      <family>Ubuntu Medium</family>
+      <pointsize>11</pointsize>
       <weight>50</weight>
       <bold>false</bold>
      </font>
     </property>
     <property name="styleSheet">
-     <string notr="true">background-color: rgb(14, 149, 148);
-border-radius: 5;
-color: white;</string>
+     <string notr="true">QPushButton{
+	background-color: #264653;
+	border-radius: 7;
+	color: white;
+}
+QPushButton:hover{
+	background-color: #1A333D;
+}</string>
     </property>
     <property name="text">
      <string>Скачать</string>
@@ -197,15 +96,15 @@ color: white;</string>
     <property name="geometry">
      <rect>
       <x>20</x>
-      <y>15</y>
+      <y>11</y>
       <width>401</width>
-      <height>21</height>
+      <height>43</height>
      </rect>
     </property>
     <property name="font">
      <font>
-      <family>Roboto Mono</family>
-      <pointsize>9</pointsize>
+      <family>Ubuntu</family>
+      <pointsize>10</pointsize>
      </font>
     </property>
     <property name="text">
@@ -217,9 +116,9 @@ color: white;</string>
    <property name="geometry">
     <rect>
      <x>0</x>
-     <y>30</y>
+     <y>55</y>
      <width>651</width>
-     <height>381</height>
+     <height>341</height>
     </rect>
    </property>
    <property name="frameShape">
@@ -258,7 +157,7 @@ color: white;</string>
     </property>
     <property name="font">
      <font>
-      <family>Roboto Mono Medium</family>
+      <family>Ubuntu Medium</family>
       <pointsize>11</pointsize>
       <weight>50</weight>
       <bold>false</bold>
@@ -286,8 +185,8 @@ border-radius: 5px;</string>
     </property>
     <property name="font">
      <font>
-      <family>Roboto Mono</family>
-      <pointsize>9</pointsize>
+      <family>Ubuntu</family>
+      <pointsize>10</pointsize>
      </font>
     </property>
     <property name="styleSheet">
@@ -308,8 +207,8 @@ border-radius: 5px;</string>
     </property>
     <property name="font">
      <font>
-      <family>Roboto Mono</family>
-      <pointsize>9</pointsize>
+      <family>Ubuntu</family>
+      <pointsize>10</pointsize>
      </font>
     </property>
     <property name="styleSheet">
@@ -328,7 +227,7 @@ border-radius: 5px;</string>
       <height>211</height>
      </rect>
     </property>
-    <layout class="QVBoxLayout" name="verticalLayout">
+    <layout class="QVBoxLayout" name="verticalLayout" stretch="0,0,0">
      <item>
       <widget class="QFrame" name="frame_2">
        <property name="sizePolicy">
@@ -390,8 +289,8 @@ background-color: rgb(14, 149, 148);
         </property>
         <property name="font">
          <font>
-          <family>Roboto Mono</family>
-          <pointsize>9</pointsize>
+          <family>Ubuntu Mono</family>
+          <pointsize>11</pointsize>
          </font>
         </property>
         <property name="text">
@@ -406,6 +305,12 @@ background-color: rgb(14, 149, 148);
           <width>249</width>
           <height>31</height>
          </rect>
+        </property>
+        <property name="font">
+         <font>
+          <family>Ubuntu</family>
+          <pointsize>9</pointsize>
+         </font>
         </property>
        </widget>
       </widget>
@@ -471,8 +376,8 @@ background-color: rgb(14, 149, 148);
         </property>
         <property name="font">
          <font>
-          <family>Roboto Mono</family>
-          <pointsize>9</pointsize>
+          <family>Ubuntu Mono</family>
+          <pointsize>11</pointsize>
          </font>
         </property>
         <property name="text">
@@ -487,6 +392,12 @@ background-color: rgb(14, 149, 148);
           <width>249</width>
           <height>31</height>
          </rect>
+        </property>
+        <property name="font">
+         <font>
+          <family>Ubuntu</family>
+          <pointsize>9</pointsize>
+         </font>
         </property>
        </widget>
       </widget>
@@ -536,8 +447,8 @@ image: url(:/icons/icons/checked.png);
         </property>
         <property name="font">
          <font>
-          <family>Roboto Mono Medium</family>
-          <pointsize>9</pointsize>
+          <family>Ubuntu Medium</family>
+          <pointsize>11</pointsize>
           <weight>50</weight>
           <bold>false</bold>
          </font>
@@ -587,8 +498,8 @@ image: url(:/icons/icons/checked.png);
         </property>
         <property name="font">
          <font>
-          <family>Roboto Mono</family>
-          <pointsize>8</pointsize>
+          <family>Ubuntu</family>
+          <pointsize>9</pointsize>
           <weight>50</weight>
           <bold>false</bold>
          </font>
@@ -606,6 +517,136 @@ image: url(:/icons/icons/checked.png);
       </widget>
      </item>
     </layout>
+   </widget>
+  </widget>
+  <widget class="QFrame" name="titleBar">
+   <property name="geometry">
+    <rect>
+     <x>0</x>
+     <y>0</y>
+     <width>651</width>
+     <height>55</height>
+    </rect>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">.QToolButton{
+background-color: rgba(255, 255, 255, 0);
+}</string>
+   </property>
+   <property name="frameShape">
+    <enum>QFrame::StyledPanel</enum>
+   </property>
+   <property name="frameShadow">
+    <enum>QFrame::Raised</enum>
+   </property>
+   <widget class="QLabel" name="formTitle">
+    <property name="geometry">
+     <rect>
+      <x>200</x>
+      <y>18</y>
+      <width>251</width>
+      <height>21</height>
+     </rect>
+    </property>
+    <property name="font">
+     <font>
+      <family>Ubuntu Medium</family>
+      <pointsize>13</pointsize>
+     </font>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">color: #264653</string>
+    </property>
+    <property name="text">
+     <string>Подтверждение загрузки</string>
+    </property>
+    <property name="alignment">
+     <set>Qt::AlignCenter</set>
+    </property>
+   </widget>
+   <widget class="QToolButton" name="CloseButton">
+    <property name="geometry">
+     <rect>
+      <x>608</x>
+      <y>12</y>
+      <width>32</width>
+      <height>32</height>
+     </rect>
+    </property>
+    <property name="sizePolicy">
+     <sizepolicy hsizetype="Minimum" vsizetype="Minimum">
+      <horstretch>0</horstretch>
+      <verstretch>0</verstretch>
+     </sizepolicy>
+    </property>
+    <property name="toolTip">
+     <string>Закрыть</string>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">.QToolButton{
+	border-radius: 7px;
+	border: 1px solid #C1C1C1;
+}
+.QToolButton:hover{
+	background-color: rgb(255, 25, 28);
+}</string>
+    </property>
+    <property name="text">
+     <string>...</string>
+    </property>
+    <property name="icon">
+     <iconset resource="resources.qrc">
+      <normaloff>:/icons/icons/close.png</normaloff>
+      <activeon>:/icons/icons/close-white.png</activeon>
+      <selectedon>:/icons/icons/close-white.png</selectedon>:/icons/icons/close.png</iconset>
+    </property>
+    <property name="popupMode">
+     <enum>QToolButton::DelayedPopup</enum>
+    </property>
+    <property name="toolButtonStyle">
+     <enum>Qt::ToolButtonIconOnly</enum>
+    </property>
+   </widget>
+   <widget class="QToolButton" name="HideButton">
+    <property name="geometry">
+     <rect>
+      <x>570</x>
+      <y>12</y>
+      <width>32</width>
+      <height>32</height>
+     </rect>
+    </property>
+    <property name="sizePolicy">
+     <sizepolicy hsizetype="Minimum" vsizetype="Minimum">
+      <horstretch>0</horstretch>
+      <verstretch>0</verstretch>
+     </sizepolicy>
+    </property>
+    <property name="toolTip">
+     <string>Свернуть</string>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">.QToolButton{
+	border-radius: 7px;
+	border: 1px solid #C1C1C1;
+}
+.QToolButton:hover{
+	background-color: rgba(0, 0, 0, 24);
+}</string>
+    </property>
+    <property name="text">
+     <string>...</string>
+    </property>
+    <property name="icon">
+     <iconset resource="resources.qrc">
+      <normaloff>:/icons/icons/hide.png</normaloff>:/icons/icons/hide.png</iconset>
+    </property>
+    <property name="popupMode">
+     <enum>QToolButton::DelayedPopup</enum>
+    </property>
+    <property name="toolButtonStyle">
+     <enum>Qt::ToolButtonIconOnly</enum>
+    </property>
    </widget>
   </widget>
  </widget>

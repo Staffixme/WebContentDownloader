@@ -3,7 +3,7 @@ import os
 import string
 
 # Информация о программе
-APP_VERSION = "1.0"
+APP_VERSION = "2.0"
 
 # Настройки программы
 tray_option = 0
@@ -25,53 +25,56 @@ def find_ffmpeg():
     return ""
 
 
-if not os.path.isdir(os.path.join("..", "WebContent App")):
-    os.mkdir(os.path.join("..", "WebContent App"))
-    os.mkdir(os.path.join("..", "WebContent App", "Thumbnails"))
-    os.mkdir(os.path.join("..", "WebContent App", "Local databases"))
+def init_data():
+    if not os.path.isdir(os.path.join("..", "WebContent App")):
+        os.mkdir(os.path.join("..", "WebContent App"))
+        os.mkdir(os.path.join("..", "WebContent App", "Thumbnails"))
+        os.mkdir(os.path.join("..", "WebContent App", "Local databases"))
 
-with sqlite3.connect("../WebContent App/Local databases/app_settings.sqlite") as db:
-    cur = db.cursor()
-    cur.execute("""
-    CREATE TABLE IF NOT EXISTS App_settings (
-    Id                  INTEGER PRIMARY KEY AUTOINCREMENT
-                                NOT NULL
-                                UNIQUE,
-    Directory_to_save TEXT,
-    Hide_in_tray      INTEGER DEFAULT (0),
-    Ffmpeg_path TEXT 
-    );""")
-    settings = cur.execute("""
-    SELECT * FROM App_settings
-    WHERE Id = 0
-    """).fetchall()
-    if not settings:
-        cur.execute(f"""
-        INSERT INTO App_settings(Id, Directory_to_save, Ffmpeg_path) VALUES(0, "", "{find_ffmpeg()}")
-        """)
+    with sqlite3.connect("../WebContent App/Local databases/app_settings.sqlite") as db:
+        cur = db.cursor()
+        cur.execute("""
+        CREATE TABLE IF NOT EXISTS App_settings (
+        Id                  INTEGER PRIMARY KEY AUTOINCREMENT
+                                    NOT NULL
+                                    UNIQUE,
+        Directory_to_save TEXT,
+        Hide_in_tray      INTEGER DEFAULT (0),
+        Ffmpeg_path TEXT 
+        );""")
         settings = cur.execute("""
-            SELECT * FROM App_settings
-            WHERE Id = 0
-            """).fetchall()
-directory_to_save = settings[0][1]
-tray_option = settings[0][2]
-ffmpeg_path = settings[0][3]
+        SELECT * FROM App_settings
+        WHERE Id = 0
+        """).fetchall()
+        if not settings:
+            cur.execute(f"""
+            INSERT INTO App_settings(Id, Directory_to_save, Ffmpeg_path) VALUES(0, "", "{find_ffmpeg()}")
+            """)
+            settings = cur.execute("""
+                SELECT * FROM App_settings
+                WHERE Id = 0
+                """).fetchall()
 
-with sqlite3.connect("../WebContent App/Local databases/videos.sqlite") as vdb:
-    cur = vdb.cursor()
-    cur.execute("""
-    CREATE TABLE IF NOT EXISTS Videos (
-    id        INTEGER PRIMARY KEY AUTOINCREMENT
-                      NOT NULL
-                      UNIQUE,
-    title     TEXT    NOT NULL,
-    thumbnail TEXT    NOT NULL
-    );""")
-    videos = cur.execute("""
-    SELECT * FROM Videos
-    """).fetchall()
-    for i in range(len(videos)):
-        video_list.append(videos[i])
+    global directory_to_save, tray_option, ffmpeg_path
+    directory_to_save = settings[0][1]
+    tray_option = settings[0][2]
+    ffmpeg_path = settings[0][3]
+
+    with sqlite3.connect("../WebContent App/Local databases/videos.sqlite") as vdb:
+        cur = vdb.cursor()
+        cur.execute("""
+        CREATE TABLE IF NOT EXISTS Videos (
+        id        INTEGER PRIMARY KEY AUTOINCREMENT
+                          NOT NULL
+                          UNIQUE,
+        title     TEXT    NOT NULL,
+        thumbnail TEXT    NOT NULL
+        );""")
+        videos = cur.execute("""
+        SELECT * FROM Videos
+        """).fetchall()
+        for i in range(len(videos)):
+            video_list.append(videos[i])
 
 
 def add_video_to_database(title: str, thumbnail: str):

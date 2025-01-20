@@ -3,13 +3,14 @@ import time
 from yt_dlp import YoutubeDL
 from PyQt6.QtCore import QRunnable, pyqtSlot, pyqtSignal, QObject
 
-from app_data import ffmpeg_path
+import app_data
 
 from os import path
 
 
 class DownloaderSignals(QObject):
     update_loading_progress = pyqtSignal(int)
+    ffmpeg_error = pyqtSignal()
 
 
 class Downloader(QRunnable):
@@ -20,14 +21,20 @@ class Downloader(QRunnable):
 
     @pyqtSlot()
     def run(self):
+        if self.video_info["format"] == "Только аудио":
+            format = "bestaudio"
+            extension = "mp3"
+        else:
+            format = f"bestvideo[height<={self.video_info["format"][:-1]}]+bestaudio/best[height<={self.video_info["format"][:-1]}]"
+            extension = self.video_info["ext"]
         ydl_opts = {
             'outtmpl': path.join(self.video_info.get("directory", ""), self.video_info.get("title", "")),
-            'ffmpeg_location': ffmpeg_path,
+            'ffmpeg_location': app_data.ffmpeg_path,
             'progress_hooks': [self.return_loading_progress],
-            'format': f"bestvideo[height<={self.video_info["format"]}]+bestaudio/best[height<={self.video_info["format"]}]",
+            'format': format,
             'postprocessors': [{
                 'key': 'FFmpegVideoConvertor',
-                'preferedformat': self.video_info["ext"],
+                'preferedformat': extension,
             }],
             'socket_timeout': 50,
             'retry_scale': 5,
@@ -36,18 +43,18 @@ class Downloader(QRunnable):
             'sponsorblock': self.video_info.get("is_sponsorblock", False),
             'sponsorblock-remove': ['sponsor'],
         }
-
-        while True:
-            try:
-                with YoutubeDL(ydl_opts) as downloader:
-                    downloader.download(self.video_info.get("url", ""))
-                break
-            except OSError as e:
-                if e.errno == 32:
-                    print("Процесс все еще занят.")
-                    time.sleep(5)
-            else:
-                raise Exception("can't download")
+        try:
+            while True:
+                try:
+                    with YoutubeDL(ydl_opts) as downloader:
+                        downloader.download(self.video_info.get("url", ""))
+                    break
+                except OSError as e:
+                    if e.errno == 32:
+                        print("Процесс все еще занят.")
+                        time.sleep(5)
+        except Exception:
+            self.signal.ffmpeg_error.emit()
 
     def return_loading_progress(self, value):
         if value['status'] == 'downloading':

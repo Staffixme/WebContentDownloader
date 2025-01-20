@@ -7,6 +7,7 @@
 
 
 from PyQt6 import QtCore, QtGui, QtWidgets
+from path_to_files import PATH
 
 
 class Ui_MainWindow(object):
@@ -16,19 +17,19 @@ class Ui_MainWindow(object):
         MainWindow.setMinimumSize(QtCore.QSize(1080, 710))
         MainWindow.setMaximumSize(QtCore.QSize(1080, 710))
         icon = QtGui.QIcon()
-        icon.addPixmap(QtGui.QPixmap("../icons/downloader_icon.png"), QtGui.QIcon.Mode.Normal, QtGui.QIcon.State.Off)
+        icon.addPixmap(QtGui.QPixmap(f"{PATH}/WebContent icon 2.png"), QtGui.QIcon.Mode.Normal, QtGui.QIcon.State.Off)
         MainWindow.setWindowIcon(icon)
         MainWindow.setStyleSheet("#titleBar{\n"
 "background-color: qlineargradient(spread:pad, x1:0.5, y1:0, x2:0.5, y2:1, stop:0 rgba(243, 243, 243, 255), stop:1 rgba(239, 239, 239, 255));\n"
-"border-top-right-radius: 7px;\n"
-"border-top-left-radius: 7px;\n"
+"border-top-right-radius: 12px;\n"
+"border-top-left-radius: 12px;\n"
 "border-bottom: 1px solid #C1C1C1\n"
 "}\n"
 "\n"
 "#statusBar{\n"
 "background-color: qlineargradient(spread:pad, x1:0.5, y1:0, x2:0.5, y2:1, stop:0 rgba(243, 243, 243, 255), stop:1 rgba(239, 239, 239, 255));\n"
-"border-bottom-right-radius: 7px;\n"
-"border-bottom-left-radius: 7px;\n"
+"border-bottom-right-radius: 12px;\n"
+"border-bottom-left-radius: 12px;\n"
 "border-top: 1px solid #C1C1C1\n"
 "}")
         self.centralwidget = QtWidgets.QWidget(parent=MainWindow)
@@ -44,71 +45,29 @@ class Ui_MainWindow(object):
         sizePolicy.setHeightForWidth(self.titleBar.sizePolicy().hasHeightForWidth())
         self.titleBar.setSizePolicy(sizePolicy)
         self.titleBar.setStyleSheet(".QToolButton{\n"
-"background-color: rgba(255, 255, 255, 0);\n"
+"    background-color: rgba(0, 0, 0, 0);\n"
+"    border-radius: 12px;\n"
+"}\n"
 "\n"
+".QToolButton:hover{\n"
+"    background-color: rgba(0, 0, 0, 25);\n"
 "}\n"
 "\n"
 "#download_button{\n"
-"background-color: rgb(14, 149, 148);\n"
-"border-radius: 4px;\n"
+"background-color: #264653;\n"
+"border-radius: 5px;\n"
+"transition: 1s linear;\n"
+"}\n"
+"\n"
+"#download_button:hover{\n"
+"    background-color: qlineargradient(spread:pad, x1:0, y1:0, x2:1, y2:1, stop:0 rgba(12, 170, 83,             255), stop:1 rgba(90, 179, 223, 255));\n"
+"    border: 0px solid #C1C1C1\n"
 "}")
         self.titleBar.setFrameShape(QtWidgets.QFrame.Shape.StyledPanel)
         self.titleBar.setFrameShadow(QtWidgets.QFrame.Shadow.Raised)
         self.titleBar.setObjectName("titleBar")
-        self.label = QtWidgets.QLabel(parent=self.titleBar)
-        self.label.setGeometry(QtCore.QRect(20, 20, 261, 71))
-        self.label.setText("")
-        self.label.setPixmap(QtGui.QPixmap("../icons/webcontentdownloader_logo_dark.png"))
-        self.label.setScaledContents(False)
-        self.label.setObjectName("label")
-        self.horizontalLayoutWidget = QtWidgets.QWidget(parent=self.titleBar)
-        self.horizontalLayoutWidget.setGeometry(QtCore.QRect(970, 10, 101, 31))
-        self.horizontalLayoutWidget.setObjectName("horizontalLayoutWidget")
-        self.horizontalLayout = QtWidgets.QHBoxLayout(self.horizontalLayoutWidget)
-        self.horizontalLayout.setSizeConstraint(QtWidgets.QLayout.SizeConstraint.SetDefaultConstraint)
-        self.horizontalLayout.setContentsMargins(0, 0, 0, 0)
-        self.horizontalLayout.setObjectName("horizontalLayout")
-        self.MoreButton = QtWidgets.QToolButton(parent=self.horizontalLayoutWidget)
-        sizePolicy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.Policy.Minimum, QtWidgets.QSizePolicy.Policy.Minimum)
-        sizePolicy.setHorizontalStretch(0)
-        sizePolicy.setVerticalStretch(0)
-        sizePolicy.setHeightForWidth(self.MoreButton.sizePolicy().hasHeightForWidth())
-        self.MoreButton.setSizePolicy(sizePolicy)
-        icon1 = QtGui.QIcon()
-        icon1.addPixmap(QtGui.QPixmap("../icons/more.png"), QtGui.QIcon.Mode.Normal, QtGui.QIcon.State.Off)
-        self.MoreButton.setIcon(icon1)
-        self.MoreButton.setPopupMode(QtWidgets.QToolButton.ToolButtonPopupMode.DelayedPopup)
-        self.MoreButton.setToolButtonStyle(QtCore.Qt.ToolButtonStyle.ToolButtonIconOnly)
-        self.MoreButton.setObjectName("MoreButton")
-        self.horizontalLayout.addWidget(self.MoreButton)
-        self.HideButton = QtWidgets.QToolButton(parent=self.horizontalLayoutWidget)
-        sizePolicy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.Policy.Minimum, QtWidgets.QSizePolicy.Policy.Minimum)
-        sizePolicy.setHorizontalStretch(0)
-        sizePolicy.setVerticalStretch(0)
-        sizePolicy.setHeightForWidth(self.HideButton.sizePolicy().hasHeightForWidth())
-        self.HideButton.setSizePolicy(sizePolicy)
-        icon2 = QtGui.QIcon()
-        icon2.addPixmap(QtGui.QPixmap("../icons/hide.png"), QtGui.QIcon.Mode.Normal, QtGui.QIcon.State.Off)
-        self.HideButton.setIcon(icon2)
-        self.HideButton.setPopupMode(QtWidgets.QToolButton.ToolButtonPopupMode.DelayedPopup)
-        self.HideButton.setToolButtonStyle(QtCore.Qt.ToolButtonStyle.ToolButtonIconOnly)
-        self.HideButton.setObjectName("HideButton")
-        self.horizontalLayout.addWidget(self.HideButton)
-        self.CloseButton = QtWidgets.QToolButton(parent=self.horizontalLayoutWidget)
-        sizePolicy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.Policy.Minimum, QtWidgets.QSizePolicy.Policy.Minimum)
-        sizePolicy.setHorizontalStretch(0)
-        sizePolicy.setVerticalStretch(0)
-        sizePolicy.setHeightForWidth(self.CloseButton.sizePolicy().hasHeightForWidth())
-        self.CloseButton.setSizePolicy(sizePolicy)
-        icon3 = QtGui.QIcon()
-        icon3.addPixmap(QtGui.QPixmap("../icons/close.png"), QtGui.QIcon.Mode.Normal, QtGui.QIcon.State.Off)
-        self.CloseButton.setIcon(icon3)
-        self.CloseButton.setPopupMode(QtWidgets.QToolButton.ToolButtonPopupMode.DelayedPopup)
-        self.CloseButton.setToolButtonStyle(QtCore.Qt.ToolButtonStyle.ToolButtonIconOnly)
-        self.CloseButton.setObjectName("CloseButton")
-        self.horizontalLayout.addWidget(self.CloseButton)
         self.horizontalLayoutWidget_5 = QtWidgets.QWidget(parent=self.titleBar)
-        self.horizontalLayoutWidget_5.setGeometry(QtCore.QRect(340, 60, 731, 37))
+        self.horizontalLayoutWidget_5.setGeometry(QtCore.QRect(10, 60, 1061, 37))
         self.horizontalLayoutWidget_5.setObjectName("horizontalLayoutWidget_5")
         self.horizontalLayout_4 = QtWidgets.QHBoxLayout(self.horizontalLayoutWidget_5)
         self.horizontalLayout_4.setContentsMargins(0, 0, 0, 0)
@@ -117,31 +76,58 @@ class Ui_MainWindow(object):
         self.horizontalLayout_2.setSizeConstraint(QtWidgets.QLayout.SizeConstraint.SetDefaultConstraint)
         self.horizontalLayout_2.setObjectName("horizontalLayout_2")
         self.backButton = QtWidgets.QToolButton(parent=self.horizontalLayoutWidget_5)
-        icon4 = QtGui.QIcon()
-        icon4.addPixmap(QtGui.QPixmap("../icons/back.png"), QtGui.QIcon.Mode.Normal, QtGui.QIcon.State.Off)
-        self.backButton.setIcon(icon4)
+        sizePolicy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.Policy.Preferred, QtWidgets.QSizePolicy.Policy.Preferred)
+        sizePolicy.setHorizontalStretch(0)
+        sizePolicy.setVerticalStretch(0)
+        sizePolicy.setHeightForWidth(self.backButton.sizePolicy().hasHeightForWidth())
+        self.backButton.setSizePolicy(sizePolicy)
+        self.backButton.setToolTip("")
+        icon1 = QtGui.QIcon()
+        icon1.addPixmap(QtGui.QPixmap(f"{PATH}/back.png"), QtGui.QIcon.Mode.Normal, QtGui.QIcon.State.Off)
+        self.backButton.setIcon(icon1)
         self.backButton.setIconSize(QtCore.QSize(24, 24))
         self.backButton.setObjectName("backButton")
         self.horizontalLayout_2.addWidget(self.backButton)
         self.forwardButton = QtWidgets.QToolButton(parent=self.horizontalLayoutWidget_5)
-        icon5 = QtGui.QIcon()
-        icon5.addPixmap(QtGui.QPixmap("../icons/forward.png"), QtGui.QIcon.Mode.Normal, QtGui.QIcon.State.Off)
-        self.forwardButton.setIcon(icon5)
+        sizePolicy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.Policy.Preferred, QtWidgets.QSizePolicy.Policy.Preferred)
+        sizePolicy.setHorizontalStretch(0)
+        sizePolicy.setVerticalStretch(0)
+        sizePolicy.setHeightForWidth(self.forwardButton.sizePolicy().hasHeightForWidth())
+        self.forwardButton.setSizePolicy(sizePolicy)
+        self.forwardButton.setToolTip("")
+        icon2 = QtGui.QIcon()
+        icon2.addPixmap(QtGui.QPixmap(f"{PATH}/forward.png"), QtGui.QIcon.Mode.Normal, QtGui.QIcon.State.Off)
+        self.forwardButton.setIcon(icon2)
         self.forwardButton.setIconSize(QtCore.QSize(24, 24))
         self.forwardButton.setObjectName("forwardButton")
         self.horizontalLayout_2.addWidget(self.forwardButton)
         self.refreshButton = QtWidgets.QToolButton(parent=self.horizontalLayoutWidget_5)
-        icon6 = QtGui.QIcon()
-        icon6.addPixmap(QtGui.QPixmap("../icons/refresh.png"), QtGui.QIcon.Mode.Normal, QtGui.QIcon.State.Off)
-        self.refreshButton.setIcon(icon6)
+        sizePolicy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.Policy.Preferred, QtWidgets.QSizePolicy.Policy.Preferred)
+        sizePolicy.setHorizontalStretch(0)
+        sizePolicy.setVerticalStretch(0)
+        sizePolicy.setHeightForWidth(self.refreshButton.sizePolicy().hasHeightForWidth())
+        self.refreshButton.setSizePolicy(sizePolicy)
+        self.refreshButton.setToolTip("")
+        icon3 = QtGui.QIcon()
+        icon3.addPixmap(QtGui.QPixmap(f"{PATH}/refresh.png"), QtGui.QIcon.Mode.Normal, QtGui.QIcon.State.Off)
+        self.refreshButton.setIcon(icon3)
         self.refreshButton.setIconSize(QtCore.QSize(24, 24))
         self.refreshButton.setObjectName("refreshButton")
         self.horizontalLayout_2.addWidget(self.refreshButton)
         self.browseButton = QtWidgets.QToolButton(parent=self.horizontalLayoutWidget_5)
-        icon7 = QtGui.QIcon()
-        icon7.addPixmap(QtGui.QPixmap("../icons/browse.png"), QtGui.QIcon.Mode.Normal, QtGui.QIcon.State.Off)
-        self.browseButton.setIcon(icon7)
+        sizePolicy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.Policy.Preferred, QtWidgets.QSizePolicy.Policy.Preferred)
+        sizePolicy.setHorizontalStretch(0)
+        sizePolicy.setVerticalStretch(0)
+        sizePolicy.setHeightForWidth(self.browseButton.sizePolicy().hasHeightForWidth())
+        self.browseButton.setSizePolicy(sizePolicy)
+        self.browseButton.setToolTip("")
+        self.browseButton.setStyleSheet("")
+        icon4 = QtGui.QIcon()
+        icon4.addPixmap(QtGui.QPixmap(f"{PATH}/browse.png"), QtGui.QIcon.Mode.Normal, QtGui.QIcon.State.Off)
+        self.browseButton.setIcon(icon4)
         self.browseButton.setIconSize(QtCore.QSize(24, 24))
+        self.browseButton.setPopupMode(QtWidgets.QToolButton.ToolButtonPopupMode.DelayedPopup)
+        self.browseButton.setArrowType(QtCore.Qt.ArrowType.NoArrow)
         self.browseButton.setObjectName("browseButton")
         self.horizontalLayout_2.addWidget(self.browseButton)
         self.horizontalLayout_4.addLayout(self.horizontalLayout_2)
@@ -152,7 +138,8 @@ class Ui_MainWindow(object):
         sizePolicy.setHeightForWidth(self.lineEdit.sizePolicy().hasHeightForWidth())
         self.lineEdit.setSizePolicy(sizePolicy)
         font = QtGui.QFont()
-        font.setFamily("Roboto Mono")
+        font.setFamily("Ubuntu")
+        font.setPointSize(9)
         self.lineEdit.setFont(font)
         self.lineEdit.setStyleSheet("border-radius: 4px;\n"
 "border: 1px solid #C1C1C1")
@@ -160,9 +147,15 @@ class Ui_MainWindow(object):
         self.lineEdit.setObjectName("lineEdit")
         self.horizontalLayout_4.addWidget(self.lineEdit)
         self.search_button = QtWidgets.QToolButton(parent=self.horizontalLayoutWidget_5)
-        icon8 = QtGui.QIcon()
-        icon8.addPixmap(QtGui.QPixmap("../icons/search.png"), QtGui.QIcon.Mode.Normal, QtGui.QIcon.State.Off)
-        self.search_button.setIcon(icon8)
+        sizePolicy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.Policy.Preferred, QtWidgets.QSizePolicy.Policy.Preferred)
+        sizePolicy.setHorizontalStretch(0)
+        sizePolicy.setVerticalStretch(0)
+        sizePolicy.setHeightForWidth(self.search_button.sizePolicy().hasHeightForWidth())
+        self.search_button.setSizePolicy(sizePolicy)
+        self.search_button.setToolTip("")
+        icon5 = QtGui.QIcon()
+        icon5.addPixmap(QtGui.QPixmap(f"{PATH}/search.png"), QtGui.QIcon.Mode.Normal, QtGui.QIcon.State.Off)
+        self.search_button.setIcon(icon5)
         self.search_button.setIconSize(QtCore.QSize(24, 24))
         self.search_button.setObjectName("search_button")
         self.horizontalLayout_4.addWidget(self.search_button)
@@ -172,17 +165,114 @@ class Ui_MainWindow(object):
         sizePolicy.setVerticalStretch(0)
         sizePolicy.setHeightForWidth(self.download_button.sizePolicy().hasHeightForWidth())
         self.download_button.setSizePolicy(sizePolicy)
-        self.download_button.setStyleSheet("")
-        icon9 = QtGui.QIcon()
-        icon9.addPixmap(QtGui.QPixmap("../icons/download.png"), QtGui.QIcon.Mode.Normal, QtGui.QIcon.State.Off)
-        self.download_button.setIcon(icon9)
+        font = QtGui.QFont()
+        font.setFamily("Ubuntu Medium")
+        font.setPointSize(10)
+        font.setBold(False)
+        font.setWeight(50)
+        self.download_button.setFont(font)
+        self.download_button.setToolTip("")
+        self.download_button.setStyleSheet(".QToolButton{\n"
+"    color: white;\n"
+"    padding-right: 12px;\n"
+"}")
+        icon6 = QtGui.QIcon()
+        icon6.addPixmap(QtGui.QPixmap(f"{PATH}/download.png"), QtGui.QIcon.Mode.Normal, QtGui.QIcon.State.Off)
+        self.download_button.setIcon(icon6)
         self.download_button.setIconSize(QtCore.QSize(24, 24))
+        self.download_button.setToolButtonStyle(QtCore.Qt.ToolButtonStyle.ToolButtonTextBesideIcon)
         self.download_button.setAutoRaise(False)
         self.download_button.setObjectName("download_button")
         self.horizontalLayout_4.addWidget(self.download_button)
-        self.horizontalLayout_4.setStretch(0, 1)
-        self.horizontalLayout_4.setStretch(1, 6)
-        self.horizontalLayout_4.setStretch(3, 1)
+        self.horizontalLayout_4.setStretch(0, 5)
+        self.horizontalLayout_4.setStretch(1, 20)
+        self.horizontalLayout_4.setStretch(2, 1)
+        self.horizontalLayout_4.setStretch(3, 3)
+        self.CloseButton = QtWidgets.QToolButton(parent=self.titleBar)
+        self.CloseButton.setGeometry(QtCore.QRect(1038, 12, 32, 32))
+        sizePolicy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.Policy.Minimum, QtWidgets.QSizePolicy.Policy.Minimum)
+        sizePolicy.setHorizontalStretch(0)
+        sizePolicy.setVerticalStretch(0)
+        sizePolicy.setHeightForWidth(self.CloseButton.sizePolicy().hasHeightForWidth())
+        self.CloseButton.setSizePolicy(sizePolicy)
+        self.CloseButton.setStyleSheet(".QToolButton{\n"
+"    border-radius: 7px;\n"
+"    border: 1px solid #C1C1C1;\n"
+"}\n"
+".QToolButton:hover{\n"
+"    background-color: rgb(255, 25, 28);\n"
+"}")
+        icon7 = QtGui.QIcon()
+        icon7.addPixmap(QtGui.QPixmap(f"{PATH}/close.png"), QtGui.QIcon.Mode.Normal, QtGui.QIcon.State.Off)
+        icon7.addPixmap(QtGui.QPixmap(f"{PATH}/close-white.png"), QtGui.QIcon.Mode.Active, QtGui.QIcon.State.On)
+        icon7.addPixmap(QtGui.QPixmap(f"{PATH}/close-white.png"), QtGui.QIcon.Mode.Selected, QtGui.QIcon.State.On)
+        self.CloseButton.setIcon(icon7)
+        self.CloseButton.setPopupMode(QtWidgets.QToolButton.ToolButtonPopupMode.DelayedPopup)
+        self.CloseButton.setToolButtonStyle(QtCore.Qt.ToolButtonStyle.ToolButtonIconOnly)
+        self.CloseButton.setObjectName("CloseButton")
+        self.HideButton = QtWidgets.QToolButton(parent=self.titleBar)
+        self.HideButton.setGeometry(QtCore.QRect(1000, 12, 32, 32))
+        sizePolicy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.Policy.Minimum, QtWidgets.QSizePolicy.Policy.Minimum)
+        sizePolicy.setHorizontalStretch(0)
+        sizePolicy.setVerticalStretch(0)
+        sizePolicy.setHeightForWidth(self.HideButton.sizePolicy().hasHeightForWidth())
+        self.HideButton.setSizePolicy(sizePolicy)
+        self.HideButton.setStyleSheet(".QToolButton{\n"
+"    border-radius: 7px;\n"
+"    border: 1px solid #C1C1C1;\n"
+"}\n"
+".QToolButton:hover{\n"
+"    background-color: rgba(0, 0, 0, 24);\n"
+"}")
+        icon8 = QtGui.QIcon()
+        icon8.addPixmap(QtGui.QPixmap(f"{PATH}/hide.png"), QtGui.QIcon.Mode.Normal, QtGui.QIcon.State.Off)
+        self.HideButton.setIcon(icon8)
+        self.HideButton.setPopupMode(QtWidgets.QToolButton.ToolButtonPopupMode.DelayedPopup)
+        self.HideButton.setToolButtonStyle(QtCore.Qt.ToolButtonStyle.ToolButtonIconOnly)
+        self.HideButton.setObjectName("HideButton")
+        self.layoutWidget = QtWidgets.QWidget(parent=self.titleBar)
+        self.layoutWidget.setGeometry(QtCore.QRect(12, 12, 131, 34))
+        self.layoutWidget.setObjectName("layoutWidget")
+        self.horizontalLayout_5 = QtWidgets.QHBoxLayout(self.layoutWidget)
+        self.horizontalLayout_5.setContentsMargins(0, 0, 0, 0)
+        self.horizontalLayout_5.setSpacing(10)
+        self.horizontalLayout_5.setObjectName("horizontalLayout_5")
+        self.app_button = QtWidgets.QLabel(parent=self.layoutWidget)
+        sizePolicy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.Policy.Fixed, QtWidgets.QSizePolicy.Policy.Preferred)
+        sizePolicy.setHorizontalStretch(0)
+        sizePolicy.setVerticalStretch(0)
+        sizePolicy.setHeightForWidth(self.app_button.sizePolicy().hasHeightForWidth())
+        self.app_button.setSizePolicy(sizePolicy)
+        self.app_button.setText("")
+        self.app_button.setPixmap(QtGui.QPixmap(f"{PATH}/WebContent icon 2.png"))
+        self.app_button.setScaledContents(False)
+        self.app_button.setObjectName("app_button")
+        self.horizontalLayout_5.addWidget(self.app_button)
+        self.menu_button = QtWidgets.QPushButton(parent=self.layoutWidget)
+        sizePolicy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.Policy.Minimum, QtWidgets.QSizePolicy.Policy.Expanding)
+        sizePolicy.setHorizontalStretch(0)
+        sizePolicy.setVerticalStretch(0)
+        sizePolicy.setHeightForWidth(self.menu_button.sizePolicy().hasHeightForWidth())
+        self.menu_button.setSizePolicy(sizePolicy)
+        font = QtGui.QFont()
+        font.setFamily("Ubuntu Medium")
+        font.setPointSize(10)
+        self.menu_button.setFont(font)
+        self.menu_button.setStyleSheet(".QPushButton{\n"
+"    background-color: rgba(0, 0, 0, 0);\n"
+"    border-radius: 7px;\n"
+"    padding-left: 12px;\n"
+"    padding-right: 12px;\n"
+"    border: 1px solid #C1C1C1;\n"
+"}\n"
+".QPushButton:hover{\n"
+"    background-color: rgba(0, 0, 0, 24);\n"
+"}")
+        icon9 = QtGui.QIcon()
+        icon9.addPixmap(QtGui.QPixmap(f"{PATH}/menu.png"), QtGui.QIcon.Mode.Normal, QtGui.QIcon.State.Off)
+        self.menu_button.setIcon(icon9)
+        self.menu_button.setObjectName("menu_button")
+        self.horizontalLayout_5.addWidget(self.menu_button)
         self.horizontalLayoutWidget_3 = QtWidgets.QWidget(parent=self.centralwidget)
         self.horizontalLayoutWidget_3.setGeometry(QtCore.QRect(0, 110, 1081, 571))
         self.horizontalLayoutWidget_3.setObjectName("horizontalLayoutWidget_3")
@@ -190,54 +280,107 @@ class Ui_MainWindow(object):
         self.horizontalLayout_3.setContentsMargins(0, 0, 0, 0)
         self.horizontalLayout_3.setSpacing(0)
         self.horizontalLayout_3.setObjectName("horizontalLayout_3")
-        self.webBrowserHandler = QtWidgets.QHBoxLayout()
-        self.webBrowserHandler.setSizeConstraint(QtWidgets.QLayout.SizeConstraint.SetDefaultConstraint)
-        self.webBrowserHandler.setObjectName("webBrowserHandler")
-        self.horizontalLayout_3.addLayout(self.webBrowserHandler)
-        self.videosList = QtWidgets.QTableWidget(parent=self.horizontalLayoutWidget_3)
-        self.videosList.setStyleSheet("QFrame{\n"
-"background-color: white;\n"
-"color: black;\n"
+        self.webBrowserHandler = QtWidgets.QTabWidget(parent=self.horizontalLayoutWidget_3)
+        font = QtGui.QFont()
+        font.setFamily("Ubuntu Medium")
+        self.webBrowserHandler.setFont(font)
+        self.webBrowserHandler.setAutoFillBackground(True)
+        self.webBrowserHandler.setStyleSheet(".QTabBar:tab{\n"
+"    background-color: qlineargradient(spread:pad, x1:0.5, y1:0, x2:0.5, y2:1, stop:0 rgba(243, 243, 243, 255), stop:1 rgba(239, 239, 239, 255));\n"
+"    height: 29px;\n"
+"    border-radius: 4px;\n"
+"    border: 1px solid #C1C1C1;\n"
+"    margin-top: 5px;\n"
+"    margin-bottom: 5px;\n"
+"    margin-left: 12px;\n"
+"    padding-left: 12px;\n"
+"    padding-right: 12px;\n"
+"    max-width: 128px;\n"
+"}\n"
+".QTabBar:close-button{\n"
+f"    image: url({PATH}/close.png);\n"
+"}\n"
+".QTabBar:tab:selected{\n"
+"    background-color: rgb(255, 255, 255);\n"
+"}\n"
+".QTabBar:tab:hover{\n"
+"    background-color:  rgba(0, 0, 0, 25);\n"
 "}")
-        self.videosList.setFrameShape(QtWidgets.QFrame.Shape.StyledPanel)
+        self.webBrowserHandler.setTabPosition(QtWidgets.QTabWidget.TabPosition.North)
+        self.webBrowserHandler.setDocumentMode(True)
+        self.webBrowserHandler.setTabsClosable(True)
+        self.webBrowserHandler.setMovable(True)
+        self.webBrowserHandler.setObjectName("webBrowserHandler")
+        self.horizontalLayout_3.addWidget(self.webBrowserHandler)
+        self.videosList = QtWidgets.QTableWidget(parent=self.horizontalLayoutWidget_3)
+        font = QtGui.QFont()
+        font.setFamily("Ubuntu Medium")
+        self.videosList.setFont(font)
+        self.videosList.setStyleSheet("QFrame{\n"
+"    background-color: white;\n"
+"    color: black;\n"
+"}\n"
+"QTableWidget:header{\n"
+"    background-color: red;\n"
+"}\n"
+"")
+        self.videosList.setFrameShape(QtWidgets.QFrame.Shape.NoFrame)
+        self.videosList.setFrameShadow(QtWidgets.QFrame.Shadow.Plain)
+        self.videosList.setLineWidth(0)
         self.videosList.setVerticalScrollBarPolicy(QtCore.Qt.ScrollBarPolicy.ScrollBarAlwaysOn)
         self.videosList.setHorizontalScrollBarPolicy(QtCore.Qt.ScrollBarPolicy.ScrollBarAlwaysOff)
+        self.videosList.setSizeAdjustPolicy(QtWidgets.QAbstractScrollArea.SizeAdjustPolicy.AdjustIgnored)
         self.videosList.setEditTriggers(QtWidgets.QAbstractItemView.EditTrigger.NoEditTriggers)
+        self.videosList.setAlternatingRowColors(False)
+        self.videosList.setShowGrid(True)
         self.videosList.setGridStyle(QtCore.Qt.PenStyle.SolidLine)
+        self.videosList.setWordWrap(True)
+        self.videosList.setCornerButtonEnabled(True)
         self.videosList.setColumnCount(4)
         self.videosList.setObjectName("videosList")
         self.videosList.setRowCount(0)
         item = QtWidgets.QTableWidgetItem()
-        item.setTextAlignment(QtCore.Qt.AlignmentFlag.AlignLeading|QtCore.Qt.AlignmentFlag.AlignVCenter)
+        item.setTextAlignment(QtCore.Qt.AlignmentFlag.AlignCenter)
         font = QtGui.QFont()
         font.setFamily("Roboto Mono")
         item.setFont(font)
         icon10 = QtGui.QIcon()
-        icon10.addPixmap(QtGui.QPixmap("../icons/image.png"), QtGui.QIcon.Mode.Normal, QtGui.QIcon.State.Off)
+        icon10.addPixmap(QtGui.QPixmap(f"{PATH}/image.png"), QtGui.QIcon.Mode.Normal, QtGui.QIcon.State.Off)
         item.setIcon(icon10)
         self.videosList.setHorizontalHeaderItem(0, item)
         item = QtWidgets.QTableWidgetItem()
         font = QtGui.QFont()
         font.setFamily("Roboto Mono")
         item.setFont(font)
+        icon11 = QtGui.QIcon()
+        icon11.addPixmap(QtGui.QPixmap(f"{PATH}/name.png"), QtGui.QIcon.Mode.Normal, QtGui.QIcon.State.Off)
+        item.setIcon(icon11)
         self.videosList.setHorizontalHeaderItem(1, item)
         item = QtWidgets.QTableWidgetItem()
         font = QtGui.QFont()
         font.setFamily("Roboto Mono")
         item.setFont(font)
+        icon12 = QtGui.QIcon()
+        icon12.addPixmap(QtGui.QPixmap(f"{PATH}/status.png"), QtGui.QIcon.Mode.Normal, QtGui.QIcon.State.Off)
+        item.setIcon(icon12)
         self.videosList.setHorizontalHeaderItem(2, item)
         item = QtWidgets.QTableWidgetItem()
         font = QtGui.QFont()
         font.setFamily("Roboto Mono")
         item.setFont(font)
-        icon11 = QtGui.QIcon()
-        icon11.addPixmap(QtGui.QPixmap("../icons/directory.png"), QtGui.QIcon.Mode.Normal, QtGui.QIcon.State.Off)
-        item.setIcon(icon11)
+        icon13 = QtGui.QIcon()
+        icon13.addPixmap(QtGui.QPixmap(f"{PATH}/directory.png"), QtGui.QIcon.Mode.Normal, QtGui.QIcon.State.Off)
+        item.setIcon(icon13)
         self.videosList.setHorizontalHeaderItem(3, item)
+        self.videosList.horizontalHeader().setVisible(True)
         self.videosList.horizontalHeader().setDefaultSectionSize(68)
+        self.videosList.horizontalHeader().setHighlightSections(True)
         self.videosList.horizontalHeader().setMinimumSectionSize(24)
         self.videosList.horizontalHeader().setSortIndicatorShown(False)
         self.videosList.horizontalHeader().setStretchLastSection(True)
+        self.videosList.verticalHeader().setVisible(False)
+        self.videosList.verticalHeader().setHighlightSections(True)
+        self.videosList.verticalHeader().setStretchLastSection(False)
         self.horizontalLayout_3.addWidget(self.videosList)
         self.horizontalLayout_3.setStretch(0, 3)
         self.horizontalLayout_3.setStretch(1, 1)
@@ -246,55 +389,34 @@ class Ui_MainWindow(object):
         self.statusBar.setFrameShape(QtWidgets.QFrame.Shape.StyledPanel)
         self.statusBar.setFrameShadow(QtWidgets.QFrame.Shadow.Raised)
         self.statusBar.setObjectName("statusBar")
-        self.pageName = QtWidgets.QLabel(parent=self.statusBar)
-        self.pageName.setGeometry(QtCore.QRect(10, 0, 521, 31))
+        self.version_text = QtWidgets.QLabel(parent=self.statusBar)
+        self.version_text.setGeometry(QtCore.QRect(940, 0, 131, 31))
         font = QtGui.QFont()
-        font.setFamily("Roboto Mono")
+        font.setFamily("Ubuntu")
         font.setPointSize(11)
-        self.pageName.setFont(font)
-        self.pageName.setObjectName("pageName")
-        self.progressBar = QtWidgets.QProgressBar(parent=self.statusBar)
-        self.progressBar.setGeometry(QtCore.QRect(629, 14, 441, 4))
-        self.progressBar.setStyleSheet("#progressBar{\n"
-"    background-color: #D2D2D2;\n"
-"    border-radius: 5px;\n"
-"}\n"
-"\n"
-"#progressBar:chunk{\n"
-"    background-color: #0E9594;\n"
-"}")
-        self.progressBar.setProperty("value", 0)
-        self.progressBar.setTextVisible(False)
-        self.progressBar.setObjectName("progressBar")
+        self.version_text.setFont(font)
+        self.version_text.setAlignment(QtCore.Qt.AlignmentFlag.AlignRight|QtCore.Qt.AlignmentFlag.AlignTrailing|QtCore.Qt.AlignmentFlag.AlignVCenter)
+        self.version_text.setObjectName("version_text")
         MainWindow.setCentralWidget(self.centralwidget)
 
         self.retranslateUi(MainWindow)
+        self.webBrowserHandler.setCurrentIndex(-1)
         QtCore.QMetaObject.connectSlotsByName(MainWindow)
 
     def retranslateUi(self, MainWindow):
         _translate = QtCore.QCoreApplication.translate
         MainWindow.setWindowTitle(_translate("MainWindow", "WebContent Downloader"))
-        self.MoreButton.setToolTip(_translate("MainWindow", "Больше"))
-        self.MoreButton.setText(_translate("MainWindow", "..."))
-        self.HideButton.setToolTip(_translate("MainWindow", "Свернуть"))
-        self.HideButton.setText(_translate("MainWindow", "..."))
-        self.CloseButton.setToolTip(_translate("MainWindow", "Закрыть"))
-        self.CloseButton.setText(_translate("MainWindow", "..."))
-        self.backButton.setToolTip(_translate("MainWindow", "Назад"))
         self.backButton.setText(_translate("MainWindow", "..."))
-        self.forwardButton.setToolTip(_translate("MainWindow", "Вперёд"))
         self.forwardButton.setText(_translate("MainWindow", "..."))
-        self.refreshButton.setToolTip(_translate("MainWindow", "Перезагрузить страницу"))
         self.refreshButton.setText(_translate("MainWindow", "..."))
-        self.browseButton.setToolTip(_translate("MainWindow", "Выбрать сайт"))
         self.browseButton.setText(_translate("MainWindow", "..."))
         self.lineEdit.setPlaceholderText(_translate("MainWindow", "Введите ссылку"))
-        self.search_button.setToolTip(_translate("MainWindow", "Поиск"))
         self.search_button.setText(_translate("MainWindow", "..."))
-        self.download_button.setToolTip(_translate("MainWindow", "Скачать"))
-        self.download_button.setText(_translate("MainWindow", "..."))
-        item = self.videosList.horizontalHeaderItem(1)
-        item.setText(_translate("MainWindow", "Название"))
-        item = self.videosList.horizontalHeaderItem(2)
-        item.setText(_translate("MainWindow", "Статус"))
-        self.pageName.setText(_translate("MainWindow", "Название страницы"))
+        self.download_button.setText(_translate("MainWindow", "Скачать"))
+        self.CloseButton.setToolTip(_translate("MainWindow", "Закрыть"))
+        self.CloseButton.setText(_translate("MainWindow", "..."))
+        self.HideButton.setToolTip(_translate("MainWindow", "Свернуть"))
+        self.HideButton.setText(_translate("MainWindow", "..."))
+        self.menu_button.setText(_translate("MainWindow", "Меню"))
+        self.videosList.setSortingEnabled(False)
+        self.version_text.setText(_translate("MainWindow", "v. ?"))
