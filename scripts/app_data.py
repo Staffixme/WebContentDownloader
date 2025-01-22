@@ -26,12 +26,12 @@ def find_ffmpeg():
 
 
 def init_data():
-    if not os.path.isdir(os.path.join("..", "WebContent App")):
-        os.mkdir(os.path.join("..", "WebContent App"))
-        os.mkdir(os.path.join("..", "WebContent App", "Thumbnails"))
-        os.mkdir(os.path.join("..", "WebContent App", "Local databases"))
+    if not os.path.isdir(os.path.join("WebContent App")):
+        os.mkdir(os.path.join("WebContent App"))
+        os.mkdir(os.path.join("WebContent App", "Thumbnails"))
+        os.mkdir(os.path.join("WebContent App", "Local databases"))
 
-    with sqlite3.connect("../WebContent App/Local databases/app_settings.sqlite") as db:
+    with sqlite3.connect("WebContent App/Local databases/app_settings.sqlite") as db:
         cur = db.cursor()
         cur.execute("""
         CREATE TABLE IF NOT EXISTS App_settings (
@@ -60,7 +60,7 @@ def init_data():
     tray_option = settings[0][2]
     ffmpeg_path = settings[0][3]
 
-    with sqlite3.connect("../WebContent App/Local databases/videos.sqlite") as vdb:
+    with sqlite3.connect("WebContent App/Local databases/videos.sqlite") as vdb:
         cur = vdb.cursor()
         cur.execute("""
         CREATE TABLE IF NOT EXISTS Videos (
@@ -78,7 +78,7 @@ def init_data():
 
 
 def add_video_to_database(title: str, thumbnail: str):
-    with sqlite3.connect("../WebContent App/Local databases/videos.sqlite") as vdb:
+    with sqlite3.connect("WebContent App/Local databases/videos.sqlite") as vdb:
         cur = vdb.cursor()
         cur.execute(f"""
                 INSERT INTO Videos(title, thumbnail) VALUES("{title}", "{thumbnail}")
@@ -89,7 +89,7 @@ def update_settings(settings: tuple):
     dir = settings[0]
     tray = settings[1]
     ffmpeg_dir = settings[2]
-    with sqlite3.connect("../WebContent App/Local databases/app_settings.sqlite") as db:
+    with sqlite3.connect("WebContent App/Local databases/app_settings.sqlite") as db:
         cur = db.cursor()
         cur.execute(f"""
         UPDATE App_settings

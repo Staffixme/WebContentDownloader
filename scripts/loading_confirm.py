@@ -7,6 +7,7 @@
 
 
 from PyQt6 import QtCore, QtGui, QtWidgets
+from path_to_files import PATH
 
 
 class Ui_Form(object):
@@ -14,7 +15,7 @@ class Ui_Form(object):
         Form.setObjectName("Form")
         Form.resize(651, 461)
         icon = QtGui.QIcon()
-        icon.addPixmap(QtGui.QPixmap("../icons/WebContent icon 2.png"), QtGui.QIcon.Mode.Normal, QtGui.QIcon.State.Off)
+        icon.addPixmap(QtGui.QPixmap(f"{PATH}/WebContent icon 2.png"), QtGui.QIcon.Mode.Normal, QtGui.QIcon.State.Off)
         Form.setWindowIcon(icon)
         Form.setStyleSheet("#titleBar{\n"
 "background-color: qlineargradient(spread:pad, x1:0.5, y1:0, x2:0.5, y2:1, stop:0 rgba(243, 243, 243, 255), stop:1 rgba(239, 239, 239, 255));\n"
@@ -135,7 +136,7 @@ class Ui_Form(object):
 "}\n"
 "\n"
 "QComboBox::down-arrow{\n"
-"image: url(../icons/dropdown_arrow.png);\n"
+f"image: url({PATH}/dropdown_arrow.png);\n"
 "height: 24px;\n"
 "}\n"
 "\n"
@@ -188,7 +189,7 @@ class Ui_Form(object):
 "}\n"
 "\n"
 "QComboBox::down-arrow{\n"
-"image: url(../icons/dropdown_arrow.png);\n"
+f"image: url({PATH}/dropdown_arrow.png);\n"
 "height: 24px;\n"
 "}\n"
 "\n"
@@ -238,7 +239,7 @@ class Ui_Form(object):
 "}\n"
 "\n"
 "QCheckBox:indicator:checked{\n"
-"image: url(../icons/checked.png);\n"
+f"image: url({PATH}/checked.png);\n"
 "}\n"
 "")
         self.frame_3.setFrameShape(QtWidgets.QFrame.Shape.StyledPanel)
@@ -307,9 +308,9 @@ class Ui_Form(object):
 "    background-color: rgb(255, 25, 28);\n"
 "}")
         icon1 = QtGui.QIcon()
-        icon1.addPixmap(QtGui.QPixmap("../icons/close.png"), QtGui.QIcon.Mode.Normal, QtGui.QIcon.State.Off)
-        icon1.addPixmap(QtGui.QPixmap("../icons/close-white.png"), QtGui.QIcon.Mode.Active, QtGui.QIcon.State.On)
-        icon1.addPixmap(QtGui.QPixmap("../icons/close-white.png"), QtGui.QIcon.Mode.Selected, QtGui.QIcon.State.On)
+        icon1.addPixmap(QtGui.QPixmap(f"{PATH}/close.png"), QtGui.QIcon.Mode.Normal, QtGui.QIcon.State.Off)
+        icon1.addPixmap(QtGui.QPixmap(f"{PATH}/close-white.png"), QtGui.QIcon.Mode.Active, QtGui.QIcon.State.On)
+        icon1.addPixmap(QtGui.QPixmap(f"{PATH}/close-white.png"), QtGui.QIcon.Mode.Selected, QtGui.QIcon.State.On)
         self.CloseButton.setIcon(icon1)
         self.CloseButton.setPopupMode(QtWidgets.QToolButton.ToolButtonPopupMode.DelayedPopup)
         self.CloseButton.setToolButtonStyle(QtCore.Qt.ToolButtonStyle.ToolButtonIconOnly)
@@ -329,7 +330,7 @@ class Ui_Form(object):
 "    background-color: rgba(0, 0, 0, 24);\n"
 "}")
         icon2 = QtGui.QIcon()
-        icon2.addPixmap(QtGui.QPixmap("../icons/hide.png"), QtGui.QIcon.Mode.Normal, QtGui.QIcon.State.Off)
+        icon2.addPixmap(QtGui.QPixmap(f"{PATH}/hide.png"), QtGui.QIcon.Mode.Normal, QtGui.QIcon.State.Off)
         self.HideButton.setIcon(icon2)
         self.HideButton.setPopupMode(QtWidgets.QToolButton.ToolButtonPopupMode.DelayedPopup)
         self.HideButton.setToolButtonStyle(QtCore.Qt.ToolButtonStyle.ToolButtonIconOnly)

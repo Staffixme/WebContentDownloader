@@ -10,10 +10,10 @@ import app_data
 
 from webbrowser import open
 
-from scripts.main_window import Ui_MainWindow
-from scripts.about import Ui_Form as About_Ui
-from scripts.loading_confirm import Ui_Form as Loading_Confirm_Ui
-from scripts.settings import Ui_Form as Settings_Ui
+from main_window import Ui_MainWindow
+from about import Ui_Form as About_Ui
+from loading_confirm import Ui_Form as Loading_Confirm_Ui
+from settings import Ui_Form as Settings_Ui
 from quick_search import Ui_Form as Quick_Search_Ui
 
 from network_tools import load_image_from_url

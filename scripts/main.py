@@ -9,6 +9,11 @@ from hotkeys import HotkeyThread
 from network_tools import get_video_info
 from video import Video
 import app_data
+from path_to_files import PATH
+import ctypes
+
+if not ctypes.windll.shell32.IsUserAnAdmin():
+    ctypes.windll.shell32.ShellExecuteW(None, "runas", sys.executable, __file__, None, 1)
 
 if hasattr(Qt, 'AA_EnableHighDpiScaling'):
     QApplication.setAttribute(Qt.AA_EnableHighDpiScaling, True)
@@ -19,7 +24,9 @@ if hasattr(Qt, 'AA_UseHighDpiPixmaps'):
 
 class AppManager:
     def __init__(self):
-        splash_screen = QSplashScreen(QPixmap("../icons/Webcontent splash v2.0.0.png"))
+        if not ctypes.windll.shell32.IsUserAnAdmin():
+            sys.exit()
+        splash_screen = QSplashScreen(QPixmap(f"{PATH}/Webcontent splash v2.0.0.png"))
         splash_screen.show()
         splash_screen.showMessage("Загрузка...", color=QColor("white"))
 
@@ -45,7 +52,7 @@ class AppManager:
 
     def create_tray(self):
         self.tray_icon = QSystemTrayIcon()
-        self.tray_icon.setIcon(QIcon("../icons/WebContent icon 2.png"))
+        self.tray_icon.setIcon(QIcon(f"{PATH}/WebContent icon 2.png"))
         self.tray_icon.setVisible(True)
 
         self.tray_menu = QMenu()
@@ -117,6 +124,7 @@ class AppManager:
 
 
 if __name__ == "__main__":
+
     app = QApplication(sys.argv)
     appManager = AppManager()
     sys.exit(app.exec())
