@@ -21,7 +21,7 @@ Web Content Downloader is a program for downloading videos and music from the In
 ## Features
 - Download videos and music from the Internet in high quality
 - Quick Search window (keyboard shortcut ctrl + q)
-- Uploading videos in different extensions (mp4, mov, avi, flv, etc.)
+- downloading videos in various extensions (mp4, mov, avi, flv, etc.)
 - and more...
 
 ## FaQ
